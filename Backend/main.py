@@ -4,12 +4,18 @@ from fastapi.middleware.cors import CORSMiddleware
 import smtplib
 from email.mime.text import MIMEText
 
+# Env for email
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+
 app = FastAPI()
 
-# ✅ CORS (VERY IMPORTANT)
+#  CORS SETTINGS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # for development (later restrict this)
+    allow_origins=["https://protfolio-site-692b.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -24,9 +30,9 @@ class Message(BaseModel):
 
 @app.post("/send-email")
 def send_email(data: Message):
-    sender_email = "dhitalanir30@gmail.com"
-    receiver_email = "dhitalanir30@gmail.com"
-    password = "ipkm uxle ehph onol" 
+    sender_email = os.getenv("MY_EMAIL")
+    receiver_email = os.getenv("MY_EMAIL")
+    password = os.getenv("EMAIL_PASS") 
 
     try:
         msg = MIMEText(f"""
