@@ -64,10 +64,18 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-gray-200">
           <div className="flex flex-col px-4 py-4 space-y-3 text-sm">
-            <Link href="/">Home</Link>
-            <Link href="/My_Works/about">About</Link>
-            <Link href="/My_Works/Project1">Projects</Link>
-            <Link href="/My_Works/Contacts">Contact</Link>
+            <Link href="/" target="_blank" onClick={() => setOpen(false)}>
+              Home
+            </Link>
+            <Link href="/My_Works/about" target="_blank" onClick={() => setOpen(false)}>
+              About
+            </Link>
+            <Link href="/My_Works/Project1" target="_blank" onClick={() => setOpen(false)}>
+              Projects
+            </Link>
+            <Link href="/My_Works/Contacts" target="_blank" onClick={() => setOpen(false)}>
+              Contact
+            </Link>
           </div>
         </div>
       )}
