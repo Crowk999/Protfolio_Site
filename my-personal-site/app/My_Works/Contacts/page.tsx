@@ -12,7 +12,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8000/send-email", {
+      const res = await fetch("https://protfolio-site-7inq.onrender.com/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
 
             <div className="pt-4 text-white/30 text-sm">
-              Usually reply within 24 hours ⚡
+              Usually reply within 4.0 hours ⚡
             </div>
           </div>
 

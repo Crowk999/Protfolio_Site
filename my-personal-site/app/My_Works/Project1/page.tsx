@@ -6,24 +6,24 @@ const projects = [
     description:
       "Full-stack shopping platform with authentication, payments, and admin dashboard.",
     image: "/projects/ecommerce.jpg",
-    tags: ["Next.js", "Stripe", "MongoDB"],
+    tags: ["React", "Django", "MySQL", "Tailwind CSS"],
     link: "#",
   },
   {
-    title: "AI SaaS Dashboard",
+    title: "Crypto Tracker",
     description:
-      "Modern AI analytics dashboard with real-time insights and charts.",
-    image: "/projects/ai.jpg",
-    tags: ["Next.js", "OpenAI", "Tailwind"],
-    link: "#",
+      "Modern Crypto Tracker for looking at you crypto Portfolio.",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot__2__-3sAxwlti.png?updatedAt=1763804900681",
+    tags: ["JavaScript", "Simple CSS"],
+    link: "https://crowk999.github.io/Crypto_tracker/crypto.html",
   },
   {
     title: "Portfolio Website",
     description:
       "Minimal, animated personal portfolio with smooth UX and responsiveness.",
-    image: "/projects/portfolio.jpg",
-    tags: ["Next.js", "Framer Motion", "Tailwind"],
-    link: "#",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214242_localhost.jpeg",
+    tags: ["Next.js", "FastAPI", "Tailwind CSS"],
+    link: "/",
   },
 ];
 
@@ -57,16 +57,18 @@ export default function Project() {
           >
 
             {/* image */}
-            <div className="relative h-52 w-full overflow-hidden">
+            <div className="relative h-52 w-full overflow-hidden rounded-lg group">
+  
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover scale-105 group-hover:scale-115 transition duration-700"
+                className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
               />
 
-              {/* darker overlay instead of blue */}
+              {/* dark gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
             </div>
 
             {/* content */}
@@ -93,7 +95,7 @@ export default function Project() {
 
               {/* link */}
               <a
-                href={project.link}
+                href={project.link} target="_blank"
                 className="inline-flex items-center gap-2 mt-6 text-sm text-white/60 hover:text-white transition"
               >
                 View Project

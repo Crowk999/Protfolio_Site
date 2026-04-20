@@ -14,6 +14,14 @@ const jsStack = [
   { label: "Next.js", color: "text-white/55 border-white/10 bg-white/5",              dot: "bg-white/40" },
 ];
 
+const techStack = [
+  { label: "Tailwind CSS", color: "border-cyan-400/30 bg-cyan-500/5", dot: "bg-cyan-400" },
+  { label: "Linux", color: "border-yellow-400/30 bg-yellow-500/5", dot: "bg-yellow-400" },
+  { label: "Git", color: "border-orange-400/30 bg-orange-500/5", dot: "bg-orange-400" },
+  { label: "MySQL", color: "border-blue-400/30 bg-blue-500/5", dot: "bg-blue-400" },
+  { label: "MongoDB", color: "border-green-400/30 bg-green-500/5", dot: "bg-green-400" },
+];
+
 export default function HeroSection() {
   return (
     <section className="w-full px-4 py-10">
@@ -81,7 +89,7 @@ export default function HeroSection() {
             <span className="text-white/62 font-medium">modern web apps</span>{" "}
             and{" "}
             <span className="text-white/62 font-medium">AI-powered systems</span>{" "}
-            — from clean Next.js frontends to Python backends with LangChain and
+            — from clean Next.js and TailWind CSS as frontends to Python backends with LangChain, Django and
             PyTorch.
           </p>
 
@@ -153,6 +161,27 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
+          
+          {/* Tech Stack Group */}
+          <div className="flex flex-col gap-[8px] mt-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.09em] text-white/18">
+              Extra Tech Stack
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-[7px]">
+              {techStack.map(({ label, color, dot }) => (
+                <div
+                  key={label}
+                  className={`flex items-center gap-[6px] px-[11px] py-[5px] rounded-[8px] border ${color} transition-transform duration-150 hover:-translate-y-px cursor-default select-none`}
+                >
+                  <span className={`w-[5px] h-[5px] rounded-full shrink-0 ${dot}`} />
+                  <span className="text-[12px] font-medium tracking-[-0.01em]">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Social icons */}
           <div className="flex justify-center gap-[8px] mt-6">
@@ -171,7 +200,8 @@ export default function HeroSection() {
 
             {/* LinkedIn */}
             <a
-              href="#"
+              href="https://x.com/SigdelAdhrit"
+              target="_blank"
               aria-label="LinkedIn"
               className="w-[34px] h-[34px] rounded-[9px] border border-white/8 bg-white/4 flex items-center justify-center hover:border-white/16 hover:bg-white/7 transition-all"
             >
@@ -182,7 +212,8 @@ export default function HeroSection() {
 
             {/* Twitter / X */}
             <a
-              href="#"
+              href="https://x.com/SigdelAdhrit"
+              target="_blank"
               aria-label="Twitter"
               className="w-[34px] h-[34px] rounded-[9px] border border-white/8 bg-white/4 flex items-center justify-center hover:border-white/16 hover:bg-white/7 transition-all"
             >
@@ -193,7 +224,7 @@ export default function HeroSection() {
 
             {/* Email */}
             <a
-              href="mailto:adhrit@example.com"
+              href="mailto:adhritsigdel@gmail.com"
               aria-label="Email"
               className="w-[34px] h-[34px] rounded-[9px] border border-white/8 bg-white/4 flex items-center justify-center hover:border-white/16 hover:bg-white/7 transition-all"
             >

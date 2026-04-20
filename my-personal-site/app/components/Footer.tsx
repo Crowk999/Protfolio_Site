@@ -37,9 +37,9 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li><a href="https://github.com/Crowk999" className="hover:text-black transition">GitHub</a></li>
-              <li><a href="#" className="hover:text-black transition">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-black transition">Twitter</a></li>
-              <li><a href="mailto:you@example.com" className="hover:text-black transition">Email</a></li>
+              <li><a href="https://x.com/SigdelAdhrit" target="_blank" className="hover:text-black transition">LinkedIn</a></li>
+              <li><a href="https://x.com/SigdelAdhrit" target="_blank" className="hover:text-black transition">Twitter</a></li>
+              <li><a href="mailto:adhritsigdel@gmail.com" className="hover:text-black transition">Email</a></li>
             </ul>
           </div>
 

@@ -12,8 +12,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold tracking-tight">
-            MySite
+          <Link
+            href="/"
+            className="group flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-sm font-bold tracking-tight text-white transition-all duration-200 hover:scale-105 active:scale-95 hover:border-white/50">
+            <span className="relative text-lg" >
+              AS
+
+              {/* Glow effect on click / active */}
+              <span className="absolute inset-0 rounded-full scale-100 opacity-0 group-active:opacity-100 group-active:scale-150 transition-all duration-300 border border-white/60 blur-sm"></span>
+            </span>
           </Link>
 
           {/* Desktop Menu */}
@@ -59,9 +66,8 @@ export default function Navbar() {
           <div className="flex flex-col px-4 py-4 space-y-3 text-sm">
             <Link href="/">Home</Link>
             <Link href="/My_Works/about">About</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/My_Works/Project1">Projects</Link>
+            <Link href="/My_Works/Contacts">Contact</Link>
           </div>
         </div>
       )}

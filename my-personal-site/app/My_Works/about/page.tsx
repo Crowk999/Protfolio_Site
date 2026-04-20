@@ -10,7 +10,7 @@ export default function Home() {
         {/* subtle background gradient */}
         <div className="absolute inset-0 -z-10 bg-gradient from-gray-50 to-white" />
 
-        <p className="text-sm text-gray-500 mb-4 tracking-wide">
+        <p className="text-lg text-gray-500 mb-4 tracking-wide ">
           Full Stack Developer
         </p>
 
@@ -21,7 +21,7 @@ export default function Home() {
 
         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
           I design and develop fast, responsive websites using modern tools
-          like Next.js and Tailwind CSS with a focus on simplicity and
+          like Next.js, React and Tailwind CSS as Frontend as well as Django Fastapi PyTorch and LangChain as Backend with a focus on simplicity and
           performance.
         </p>
 
@@ -51,7 +51,7 @@ export default function Home() {
               Frontend
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Crafting responsive interfaces with React, Next.js, and modern CSS frameworks.
+              Crafting responsive interfaces with React, Next.js, and TailWind CSS frameworks.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function Home() {
               Backend
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Building APIs and handling data efficiently with scalable architecture.
+              Building APIs and handling data efficiently with scalable architecture and AI Integration.
             </p>
           </div>
 
@@ -72,6 +72,7 @@ export default function Home() {
               Creating clean, user-focused layouts with attention to detail and usability.
             </p>
           </div>
+
 
         </div>
       </section>
@@ -97,7 +98,14 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-8">
           
           <div className="group border rounded-2xl p-6 hover:shadow-lg transition duration-300">
-            <div className="h-40 bg-gray-400 rounded-lg mb-4" />
+            <Link href="/">
+            <div className="h-40 mb-4 overflow-hidden rounded-lg">
+              <img
+                src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214242_localhost.jpeg"
+                alt="Portfolio Preview"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
 
             <h3 className="font-semibold text-lg mb-2">
               Portfolio Website
@@ -110,22 +118,31 @@ export default function Home() {
             <span className="text-sm underline cursor-pointer">
               View Project
             </span>
+            </Link>
           </div>
 
           <div className="group border rounded-2xl p-6 hover:shadow-lg transition duration-300">
-            <div className="h-40 bg-gray-400 rounded-lg mb-4" />
+            <Link href="https://crowk999.github.io/Chess/chess.html" target="_blank">
+            <div className="h-40 mb-4 overflow-hidden rounded-lg">
+              <img
+                src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg"
+                alt="Portfolio Preview"
+                className="w-full h-full object-contain"
+              />
+            </div>
 
             <h3 className="font-semibold text-lg mb-2">
-              SaaS Dashboard
+              Chess Game
             </h3>
 
             <p className="text-sm text-gray-600 mb-4">
-              Dashboard UI with analytics, charts, and responsive layout.
+              A Fun Chess Game to play with each other in free times.
             </p>
 
             <span className="text-sm underline cursor-pointer">
               View Project
             </span>
+            </Link>
           </div>
 
         </div>
