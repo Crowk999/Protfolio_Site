@@ -15,7 +15,7 @@ app = FastAPI()
 #  CORS SETTINGS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://protfolio-site-692b.vercel.app/"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -24,7 +24,7 @@ app.add_middleware(
 
 class Message(BaseModel):
     name: str = Field(..., min_length=4, max_length=15)
-    email: EmailStr
+    email: str
     message: str = Field(..., min_length=3, max_length=500)
 
 
