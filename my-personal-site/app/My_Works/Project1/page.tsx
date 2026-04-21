@@ -25,11 +25,35 @@ const projects = [
     tags: ["Next.js", "FastAPI", "Tailwind CSS"],
     link: "/",
   },
+  {
+    title: "CHESS GAME",
+    description:
+      "A Chess Game to play with your Friends in your Free Time.",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg",
+    tags: ["Java Script", "CSS", "Chess Logic"],
+    link: "https://crowk999.github.io/Chess/chess.html",
+  },
+  {
+    title: "Tic Tac Toe",
+    description:
+      "A Tic Tac Toe Game to play with your Friends in your Free Time.",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_21-4-2026_201027_crowk999.github.io.jpeg",
+    tags: ["Java Script", "CSS", "Game Logic"],
+    link: "https://crowk999.github.io/Just_game/game.html",
+  },
+  {
+    title: "AIR CANVAS",
+    description:
+      "A Canvas in whic you can draw in your Camera with finger and different Colours",
+    image: "/projects/air-canvas.jpg",
+    tags: ["Python", "OpenCV", "MediaPipe"],
+    link: "https://github.com/Crowk999/Air-Canvas",
+  },
 ];
 
 export default function Project() {
   return (
-    <section className="relative min-h-screen bg-[#050507] text-white px-6 py-24 overflow-hidden">
+    <section className="relative min-h-screen rounded-b-3xl bg-[#050507] text-white px-6 py-24 overflow-hidden">
 
       {/* 🔮 subtle ambient glow (NOT blue anymore) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-purple-600/10 blur-[180px] -z-10" />

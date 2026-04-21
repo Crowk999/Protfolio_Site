@@ -23,7 +23,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li><Link href="/" className="hover:text-black transition">Home</Link></li>
-              <li> <Link href="/My_Works/about" className="hover:text-black transition"> About</Link></li>
+              <li><Link href="/My_Works/about" className="hover:text-black transition"> About</Link></li>
               <li><Link href="/My_Works/Project1" className="hover:text-black transition">Projects</Link></li>
               <li><Link href="/My_Works/Contacts" className="hover:text-black transition">Contact</Link></li>
             </ul>
