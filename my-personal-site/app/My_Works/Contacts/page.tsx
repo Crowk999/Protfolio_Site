@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -8,34 +9,62 @@ export default function Contact() {
     message: "",
   });
 
+  const [isSending, setIsSending] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // 🚫 block if already sending or cooldown active
+    if (isSending || cooldown > 0) return;
+
+    setIsSending(true);
+
     try {
-      const res = await fetch("https://protfolio-site-7inq.onrender.com/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://protfolio-site-7inq.onrender.com/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
-      const data = await res.json();
+      if (res.ok) {
+        alert("Message sent ✅");
 
-      alert("Message sent ✅");
+        // reset form
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
 
-      // reset form
-      setForm({
-        name: "",
-        email: "",
-        message: "",
-      });
+        // ⏳ start 15 sec cooldown
+        setCooldown(10);
 
+        const timer = setInterval(() => {
+          setCooldown((prev) => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+      } else {
+        alert("Failed ❌");
+      }
     } catch (err) {
       alert("Error sending message ❌");
       console.error(err);
+    } finally {
+      setIsSending(false);
     }
-  };
+};
+  
 
   return (
     <section className="relative min-h-screen bg-[#050507] text-white flex items-center justify-center px-6 py-24 overflow-hidden">
@@ -73,7 +102,7 @@ export default function Contact() {
               If you have something in mind, send a message — let’s build
               something meaningful.
             </p>
-            <p>It takes some time to send the message so please be patient.</p>
+            <p className=" leading-relaxed">It takes some time to send the message so please be patient.</p>
 
             <div className="space-y-3 text-sm text-white/60">
               <p>📍 Kathmandu, Nepal</p>
@@ -143,8 +172,13 @@ export default function Contact() {
               className="w-full py-3 rounded-xl bg-white text-black font-medium 
               hover:bg-white/90 transition-all duration-300 
               hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+              disabled={isSending || cooldown > 0}
             >
-              Send Message →
+              {isSending
+                ? "Sending..."
+                : cooldown > 0
+                ? `Wait ${cooldown}s`
+                : "Send Message"}
             </button>
 
           </form>
