@@ -22,11 +22,10 @@ export default function Footer() {
               Navigation
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="/" className="hover:text-black transition">Home</a></li>
-              {/*<li><a href="/about" className="hover:text-black transition">About</a></li>*/}
+              <li><Link href="/" className="hover:text-black transition">Home</Link></li>
               <li> <Link href="/My_Works/about" className="hover:text-black transition"> About</Link></li>
-              <li><a href="/My_Works/Projects" className="hover:text-black transition">Projects</a></li>
-              <li><a href="/My_Works/Contacts" className="hover:text-black transition">Contact</a></li>
+              <li><Link href="/My_Works/Project1" className="hover:text-black transition">Projects</Link></li>
+              <li><Link href="/My_Works/Contacts" className="hover:text-black transition">Contact</Link></li>
             </ul>
           </div>
 
