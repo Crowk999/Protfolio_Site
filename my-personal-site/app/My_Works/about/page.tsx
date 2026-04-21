@@ -149,23 +149,44 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="text-center py-20 rounded-2xl border  from-gray-50 to-white">
-        <h2 className="text-3xl font-semibold mb-4">
+      <section className="relative overflow-hidden py-24">
+
+      {/* 🌈 background glow blobs */}
+      <div className="absolute -top-10 -left-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"></div>
+      <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full"></div>
+
+      {/* 📦 main card */}
+      <div className="relative max-w-4xl mx-auto text-center px-6 py-14 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-xl hover:shadow-blue-500/10 transition">
+
+        {/* heading */}
+        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
           Let’s build something great
         </h2>
 
-        <p className="text-gray-600 mb-8">
-          I’m open to freelance work and collaborations.
+        {/* subtext */}
+        <p className="text-white/60 mb-8 max-w-xl mx-auto">
+          I’m open to freelance work, collaborations, and interesting ideas.
+          If you have something exciting, let’s bring it to life.
         </p>
 
+        {/* CTA button */}
         <Link
           href="/My_Works/Contacts"
-          className="px-8 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition duration-300
-        ">
-        
+          className="inline-block px-8 py-3 rounded-xl bg-white text-black font-medium
+          transition-all duration-300
+          hover:scale-105 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]
+          active:scale-95"
+        >
           Get in touch
         </Link>
-      </section>
+
+        {/* small trust line */}
+        <p className="mt-6 text-xs text-white/40">
+          Usually replies within 24 hours ⚡
+        </p>
+
+      </div>
+    </section>
 
     </div>
   );

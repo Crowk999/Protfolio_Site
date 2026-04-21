@@ -102,7 +102,6 @@ export default function Contact() {
               If you have something in mind, send a message — let’s build
               something meaningful.
             </p>
-            <p className=" leading-relaxed">It takes some time to send the message so please be patient.</p>
 
             <div className="space-y-3 text-sm text-white/60">
               <p>📍 Kathmandu, Nepal</p>
