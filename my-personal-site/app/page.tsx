@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import { motion } from "motion/react";
 
 const pythonStack = [
   { label: "Python",    color: "text-[#85B7EB] border-[#378ADD]/25 bg-[#378ADD]/10", dot: "bg-[#378ADD]" },
@@ -24,7 +25,7 @@ const techStack = [
 
 export default function HeroSection() {
   return (
-    <section className="w-full px-4 py-10">
+    <section className="w-full px-4 py-10" >
       <div
         className="
           relative max-w-3xl mx-auto rounded-[20px] overflow-hidden
