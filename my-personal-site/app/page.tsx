@@ -16,16 +16,16 @@ const jsStack = [
 ];
 
 const techStack = [
-  { label: "Tailwind CSS", color: "border-cyan-400/30 bg-cyan-500/5", dot: "bg-cyan-400" },
-  { label: "Linux", color: "border-yellow-400/30 bg-yellow-500/5", dot: "bg-yellow-400" },
-  { label: "Git", color: "border-orange-400/30 bg-orange-500/5", dot: "bg-orange-400" },
-  { label: "MySQL", color: "border-blue-400/30 bg-blue-500/5", dot: "bg-blue-400" },
-  { label: "MongoDB", color: "border-green-400/30 bg-green-500/5", dot: "bg-green-400" },
+  { label: "Tailwind CSS", color: " text-[#F7DF1E] border-cyan-400/30 bg-cyan-500/5", dot: "bg-cyan-400" },
+  { label: "Linux", color: " text-[#85B7EB] border-yellow-400/30 bg-yellow-500/5", dot: "bg-yellow-400" },
+  { label: "Git", color: "text-text-[#AFA9EC] border-orange-400/30 bg-orange-500/5", dot: "bg-orange-400" },
+  { label: "MySQL", color: " text-[#9FE1CB] border-blue-400/30 bg-blue-500/5", dot: "bg-blue-400" },
+  { label: "MongoDB", color: " text-[#5DCAA5] border-green-400/30 bg-green-500/5", dot: "bg-green-400" },
 ];
 
 export default function HeroSection() {
   return (
-    <section className="w-full px-4 py-10" >
+    <section className="w-full px-4 py-10 " >
       <div
         className="
           relative max-w-3xl mx-auto rounded-[20px] overflow-hidden
