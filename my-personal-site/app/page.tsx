@@ -16,11 +16,11 @@ const jsStack = [
 ];
 
 const techStack = [
-  { label: "Tailwind CSS", color: " text-[#F7DF1E] border-cyan-400/30 bg-cyan-500/5", dot: "bg-cyan-400" },
-  { label: "Linux", color: " text-[#85B7EB] border-yellow-400/30 bg-yellow-500/5", dot: "bg-yellow-400" },
-  { label: "Git", color: "text-text-[#AFA9EC] border-orange-400/30 bg-orange-500/5", dot: "bg-orange-400" },
-  { label: "MySQL", color: " text-[#9FE1CB] border-blue-400/30 bg-blue-500/5", dot: "bg-blue-400" },
-  { label: "MongoDB", color: " text-[#5DCAA5] border-green-400/30 bg-green-500/5", dot: "bg-green-400" },
+  { label: "Tailwind CSS",  color: "text-[#85B7EB] border-[#378ADD]/25 bg-[#378ADD]/10", dot: "bg-[#378ADD]"},
+  { label: "Linux", color: " text-[#9FE1CB] border-[#5DCAA5]/22 bg-[#5DCAA5]/8",  dot: "bg-[#5DCAA5]" },
+  { label: "Git", color: "text-[#AFA9EC] border-[#7F77DD]/25 bg-[#534AB7]/10", dot: "bg-[#7F77DD]" },
+  { label: "MySQL", color: " text-[#F0997B] border-[#D85A30]/22 bg-[#D85A30]/9",  dot: "bg-[#D85A30]" },
+  { label: "MongoDB", color: "text-[#4DB33D] border-[#4DB33D]/25 bg-[#4DB33D]/10", dot: "bg-[#4DB33D]" },
 ];
 
 export default function HeroSection() {
