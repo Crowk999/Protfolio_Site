@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+;
 
 const projects = [
   {
@@ -7,7 +9,7 @@ const projects = [
       "Full-stack shopping platform with authentication, payments, and admin dashboard.",
     image: "/projects/ecommerce.jpg",
     tags: ["React", "Django", "MySQL", "Tailwind CSS"],
-    link: "#",
+    link: "https://github.com/Crowk999/Ecom_Store",
   },
   {
     title: "Crypto Tracker",

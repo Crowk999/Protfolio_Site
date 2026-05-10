@@ -1,5 +1,5 @@
-﻿import Link from "next/link";
-import { motion } from "motion/react";
+﻿"use client";
+import Link from "next/link";
 
 const pythonStack = [
   { label: "Python",    color: "text-[#85B7EB] border-[#378ADD]/25 bg-[#378ADD]/10", dot: "bg-[#378ADD]" },
