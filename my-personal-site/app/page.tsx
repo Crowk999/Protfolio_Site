@@ -6,21 +6,24 @@ const pythonStack = [
   { label: "Django",    color: "text-[#5DCAA5] border-[#1D9E75]/25 bg-[#1D9E75]/10", dot: "bg-[#1D9E75]" },
   { label: "FastAPI",   color: "text-[#9FE1CB] border-[#5DCAA5]/22 bg-[#5DCAA5]/8",  dot: "bg-[#5DCAA5]" },
   { label: "LangChain", color: "text-[#AFA9EC] border-[#7F77DD]/25 bg-[#534AB7]/10", dot: "bg-[#7F77DD]" },
+  { label: "Scikit Learn",    color: "text-[#85B7EB] border-[#378ADD]/25 bg-[#378ADD]/10", dot: "bg-[#378ADD]" },
   { label: "PyTorch",   color: "text-[#F0997B] border-[#D85A30]/22 bg-[#D85A30]/9",  dot: "bg-[#D85A30]" },
 ];
 
 const jsStack = [
   {label: "NodeJS", color: "text-[#F7DF1E] border-[#F7DF1E]/25 bg-[#F7DF1E]/10", dot: "bg-[#F7DF1E]" },
-  { label: "React",   color: "text-[#85B7EB] border-[#378ADD]/22 bg-[#378ADD]/9",     dot: "bg-[#378ADD]" },
-  { label: "Next.js", color: "text-white/55 border-white/10 bg-white/5",              dot: "bg-white/40" },
+  { label: "React",   color: "text-[#85B7EB] border-[#378ADD]/22 bg-[#378ADD]/9", dot: "bg-[#378ADD]" },
+  { label: "Next.js", color: "text-white/55 border-white/10 bg-white/5",           dot: "bg-white/40" },
+  { label: "TypeScript",   color: "text-[#F0997B] border-[#D85A30]/22 bg-[#D85A30]/9", dot: "bg-[#D85A30]"},
+  {label: "Tailwind CSS", color: "text-[#4DB33D] border-[#4DB33D]/25 bg-[#4DB33D]/10", dot: "bg-[#4DB33D]"}
 ];
 
 const techStack = [
-  { label: "Tailwind CSS",  color: "text-[#85B7EB] border-[#378ADD]/25 bg-[#378ADD]/10", dot: "bg-[#378ADD]"},
   { label: "Linux", color: " text-[#9FE1CB] border-[#5DCAA5]/22 bg-[#5DCAA5]/8",  dot: "bg-[#5DCAA5]" },
   { label: "Git", color: "text-[#AFA9EC] border-[#7F77DD]/25 bg-[#534AB7]/10", dot: "bg-[#7F77DD]" },
   { label: "MySQL", color: " text-[#F0997B] border-[#D85A30]/22 bg-[#D85A30]/9",  dot: "bg-[#D85A30]" },
   { label: "MongoDB", color: "text-[#4DB33D] border-[#4DB33D]/25 bg-[#4DB33D]/10", dot: "bg-[#4DB33D]" },
+  { label: "Vercel",   color: "text-[#F0997B] border-[#D85A30]/22 bg-[#D85A30]/9",  dot: "bg-[#D85A30]" },
 ];
 
 export default function HeroSection() {
@@ -125,7 +128,7 @@ export default function HeroSection() {
             {/* Python / AI group */}
             <div className="flex flex-col gap-[6px]">
               <p className="font-mono text-[10px] uppercase tracking-[0.09em] text-white/18">
-                Python / AI
+                Backend / AI
               </p>
               <div className="flex flex-wrap justify-center gap-[7px]">
                 {pythonStack.map(({ label, color, dot }) => (
