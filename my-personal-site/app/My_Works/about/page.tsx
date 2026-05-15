@@ -99,21 +99,21 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-8">
           
           <div className="group border rounded-2xl p-6 hover:shadow-lg transition duration-300">
-            <Link href="/">
+            <Link href="https://adhrit-store.vercel.app/">
             <div className="h-40 mb-4 overflow-hidden rounded-lg">
               <img
-                src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214242_localhost.jpeg"
-                alt="Portfolio Preview"
+                src="https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.pn"
+                alt="Ecommerce Site"
                 className="w-full h-full object-cover object-top"
               />
             </div>
 
             <h3 className="font-semibold text-lg mb-2">
-              Portfolio Website
+              Ecommerce Site
             </h3>
 
             <p className="text-sm text-gray-600 mb-4">
-              A modern developer portfolio built with Next.js and Tailwind.
+              A Ecommerce Site where admin can upload products people can login and save and buy products.
             </p>
 
             <span className="text-sm underline cursor-pointer">
@@ -127,7 +127,7 @@ export default function Home() {
             <div className="h-40 mb-4 overflow-hidden rounded-lg">
               <img
                 src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg"
-                alt="Portfolio Preview"
+                alt="Chess"
                 className="w-full h-full object-contain"
               />
             </div>
