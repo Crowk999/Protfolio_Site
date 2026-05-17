@@ -102,7 +102,7 @@ export default function Home() {
             <Link href="https://adhrit-store.vercel.app/">
             <div className="h-40 mb-4 overflow-hidden rounded-lg">
               <img
-                src="https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.pn"
+                src="https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png"
                 alt="Ecommerce Site"
                 className="w-full h-full object-cover object-top"
               />

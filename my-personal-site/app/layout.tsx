@@ -8,17 +8,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      
-      <header> <NavBar /> </header>
-      
+   <html lang="en">
       <body>
-        <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+        <header>
+          <NavBar />
+        </header>
+
+        <main className="max-w-6xl mx-auto px-4 py-8">
+          {children}
+        </main>
+
+        <footer>
+          <Footer />
+        </footer>
       </body>
-      <footer>
-        <Footer />
-      </footer>
-        
     </html>
   );
 }
