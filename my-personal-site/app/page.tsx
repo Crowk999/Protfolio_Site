@@ -1,6 +1,7 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import OrbitWidget from "./orbit";
 
 const groups = [
   {
@@ -149,10 +150,12 @@ export default function HeroSection() {
           {/* Stats grid */}
           <div className="grid grid-cols-2 gap-[7px]">
             {[
-              { val: "12+", lbl: "projects" },
-              { val: "3+",  lbl: "years" },
-              { val: "8",   lbl: "frameworks" },
+              { val: "10+", lbl: "projects" },
+              { val: "1+",  lbl: "years" },
+              { val: "5",   lbl: "frameworks" },
               { val: "∞",   lbl: "coffee" },
+              { val: "17",  lbl: "Age" },
+              { val: "∞",  lbl: "imagination" },
             ].map(({ val, lbl }) => (
               <div key={lbl} className="bg-[#0c0c10] border border-white/[0.07] rounded-[8px] px-[11px] py-[10px]">
                 <div
@@ -164,6 +167,10 @@ export default function HeroSection() {
                 <div className="text-[9px] text-white/25 tracking-[.07em] uppercase">{lbl}</div>
               </div>
             ))}
+            {/* for that spining orbit */}
+            <div>
+              <OrbitWidget />
+            </div>
           </div>
 
           {/* Socials */}

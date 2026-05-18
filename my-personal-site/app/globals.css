@@ -24,3 +24,44 @@ body {
   from { transform: translateX(-33.333%); }
   to   { transform: translateX(0); }
 }
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbitB {
+  from { transform: rotate(90deg); }
+  to   { transform: rotate(450deg); }
+}
+@keyframes orbitC {
+  from { transform: rotate(180deg); }
+  to   { transform: rotate(540deg); }
+}
+@keyframes orbitD {
+  from { transform: rotate(270deg); }
+  to   { transform: rotate(630deg); }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0;   }
+}
+
+/* =====================
+   ANIMATION CLASSES
+===================== */
+.orbit {
+  animation: orbit 6s linear infinite;       /* AI  — starts at   0deg */
+}
+.orbitB {
+  animation: orbitB 6s linear infinite;      /* FS  — starts at  90deg */
+}
+.orbitC {
+  animation: orbitC 6s linear infinite;      /* UI  — starts at 180deg */
+}
+.orbitD {
+  animation: orbitD 6s linear infinite;      /* DO  — starts at 270deg */
+}
+.pulseRing {
+  animation: pulseRing 2s ease-out infinite;
+}

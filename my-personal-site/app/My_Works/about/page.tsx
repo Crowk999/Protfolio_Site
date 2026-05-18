@@ -5,11 +5,13 @@ import Link from "next/link";
 export default function Home() {
   {/* ── Rotating quotes ── */}
   const quotes = [
-    "Code is not just syntax — it's the closest thing to magic the real world has to offer.",
-    "First, solve the problem. Then, write the code.",
+    "People Dreams Never End...",
+    "I’m gonna be King of the Pirates!",
     "The best error message is the one that never shows up.",
     "Simplicity is the soul of efficiency.",
     "Make it work, make it right, make it fast.",
+    "“Nothing happened.”",
+    "I’m not gonna run away, I never go back on my word. That’s my nindō: my ninja way!",
     "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
   ];
 
@@ -22,8 +24,8 @@ export default function Home() {
       setTimeout(() => {
         setIndex(prev => (prev + 1) % quotes.length);
         setFade(true);
-      }, 400);
-    }, 30000);
+      }, 300);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -95,7 +97,7 @@ export default function Home() {
         <div className="relative inline-block mt-6 mb-10 px-6 py-4 rounded-2xl border border-white/[0.07] bg-white/[0.03]">
           <span className="absolute -top-3 left-6 text-3xl text-[#1D9E75] leading-none select-none">"</span>
           <p
-            className="text-[13px] text-white/30 italic leading-relaxed max-w-sm transition-opacity duration-400"
+            className="text-[13px] text-white/30 italic leading-relaxed max-w-sm transition-opacity duration-300"
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               opacity: fade ? 1 : 0,
@@ -109,7 +111,7 @@ export default function Home() {
                 key={i}
                 onClick={() => {
                   setFade(false);
-                  setTimeout(() => { setIndex(i); setFade(true); }, 400);
+                  setTimeout(() => { setIndex(i); setFade(true); }, 300);
                 }}
                 className="cursor-pointer rounded-full transition-all duration-300"
                 style={{
@@ -133,10 +135,10 @@ export default function Home() {
               animation: "tickerL 25s linear infinite",
             }}
           >
-            {[...Array(3)].flatMap(() =>
+            {[...Array(3)].flatMap((_, outer) =>
               ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js"].map((t, i) => (
                 <span
-                  key={`${t}-${i}`}
+                  key={`${t}-${outer}-${i}`}
                   className="inline-flex items-center gap-2 whitespace-nowrap text-[12px] font-medium px-4 py-[6px] rounded-full border border-[rgba(55,138,221,0.25)] bg-[rgba(55,138,221,0.07)] text-[#85B7EB] cursor-default select-none flex-shrink-0"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
@@ -157,10 +159,10 @@ export default function Home() {
               animation: "tickerR 20s linear infinite",
             }}
           >
-            {[...Array(3)].flatMap(() =>
+            {[...Array(3)].flatMap((_, outer) =>
               ["Python", "Django", "FastAPI", "LangChain", "PyTorch", "Scikit Learn", "MongoDB", "MySQL"].map((t, i) => (
                 <span
-                  key={`${t}-${i}`}
+                  key={`${t}-${outer}-${i}`}
                   className="inline-flex items-center gap-2 whitespace-nowrap text-[12px] font-medium px-4 py-[6px] rounded-full border border-[rgba(29,158,117,0.28)] bg-[rgba(29,158,117,0.07)] text-[#5DCAA5] cursor-default select-none flex-shrink-0"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
