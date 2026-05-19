@@ -21,7 +21,7 @@ const projects = [
     image: "https://ik.imagekit.io/8pckwj2wc/Screenshot__2__-3sAxwlti.png?updatedAt=1763804900681",
     tags: ["JavaScript", "Simple CSS"],
     link: "https://crowk999.github.io/Crypto_tracker/crypto.html",
-    videoId:"TT385EFm6jM",
+    videoId:null,
   },
   {
     title: "Portfolio Website",
@@ -30,7 +30,7 @@ const projects = [
     image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214242_localhost.jpeg",
     tags: ["Next.js", "FastAPI", "Tailwind CSS"],
     link: "/",
-    videoId:"hh",
+    videoId:"QiPKAeE-H7k",
   },
   {
     title: "CHESS GAME",
@@ -39,7 +39,7 @@ const projects = [
     image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg",
     tags: ["Java Script", "CSS", "Chess Logic"],
     link: "https://crowk999.github.io/Chess/chess.html",
-    videoId:"_-U7r4cAGSs?si=u0Csn2WE4EjeIJwS",
+    videoId:"eSrArRaDDD0?si=sN117zll1tWZwn0f",
   },
   {
     title: "Tic Tac Toe",
@@ -48,7 +48,7 @@ const projects = [
     image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_21-4-2026_201027_crowk999.github.io.jpeg",
     tags: ["Java Script", "CSS", "Game Logic"],
     link: "https://crowk999.github.io/Just_game/game.html",
-    videoId:"hh",
+    videoId:"qpkMUDfBZ0Q?si=FM0B1M9R6ObM9qQl",
   },
   {
     title: "AIR CANVAS",
@@ -57,7 +57,7 @@ const projects = [
     image: null,
     tags: ["Python", "OpenCV", "MediaPipe"],
     link: "https://github.com/Crowk999/Air-Canvas",
-    videoId:"hh",
+    videoId:null,
   },
   {
     title: "E-Commerce Project",
@@ -66,7 +66,7 @@ const projects = [
     image: "https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png",
     tags: ["NextJs", "Django", "MySQL", "Tailwind CSS", "SupaBase"],
     link: "https://adhrit-store.vercel.app/",
-    videoId:null,
+    videoId:"7YgcpBKTULo?si=2w5tfkaY1l_2pMvH",
   },
 ];
 
@@ -127,26 +127,26 @@ export default function Project() {
           >
 
             {/* image */}
-            <div className="relative h-52 w-full overflow-hidden rounded-lg group">
+          <div className="relative h-52 w-full overflow-hidden rounded-lg group">
 
-  {project.image ? (
-    <Image
-      src={project.image}
-      alt={project.title}
-      fill
-      sizes="(max-width: 768px) 100vw, 50vw"
-      className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
-    />
-  ) : (
-    <div className="absolute inset-0 bg-gray-900 flex items-center justify-center text-white/40">
-      No Image
-    </div>
-  )}
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gray-900 flex items-center justify-center text-white/40">
+                No Image
+              </div>
+            )}
 
-  {/* dark gradient overlay */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            {/* dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-</div>
+          </div>
 
             {/* content */}
             <div className="p-6">
@@ -200,52 +200,51 @@ export default function Project() {
         ))}
       </div>
       {videoIsOpen && (
-  videoId ? (
+        videoId ? (
     // 🎬 VIDEO MODAL
-     <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
 
-  <div className="relative bg-white p-3 rounded-xl">
+        <div className="relative bg-white p-3 rounded-xl">
 
-    {/* ❌ Close Button */}
-    <button
-      onClick={videoClose}
-      className="absolute -top-3 -right-3 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
-    >
-      ✕
-    </button>
+          {/* ❌ Close Button */}
+          <button
+            onClick={videoClose}
+            className="absolute -top-3 -right-3 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+          >
+            ✕
+          </button>
 
-    {/* 🎬 Video */}
-    <div className="w-[90vw] max-w-xl aspect-video">
-      <iframe
-        className="w-full h-full rounded"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-        allowFullScreen
-      />
+          {/* 🎬 Video */}
+          <div className="w-[90vw] max-w-xl aspect-video">
+            <iframe
+              className="w-full h-full rounded"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              allowFullScreen
+            />
+          </div>
+
+          </div>
+        </div>
+    ) : (
+    // ❌ NO VIDEO BOX (only if user clicked)
+    <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+
+      <div className="relative bg-white p-6 rounded-xl text-center">
+
+        <h2 className="text-lg text-black font-semibold">No Video Available</h2>
+
+        <button
+          onClick={videoClose}
+          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+        >
+          Close
+        </button>
+
+      </div>
+
     </div>
-
-  </div>
-</div>
-  ) : (
-  // ❌ NO VIDEO BOX (only if user clicked)
-  <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
-
-    <div className="relative bg-white p-6 rounded-xl text-center">
-
-      <h2 className="text-lg text-black font-semibold">No Video Available</h2>
-
-      <button
-        onClick={videoClose}
-        className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
-      >
-        Close
-      </button>
-
-    </div>
-
-  </div>
-)
-)}
+  )
+  )}
     </section>
-
   );
 }
