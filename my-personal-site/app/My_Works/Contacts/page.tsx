@@ -18,7 +18,7 @@ export default function Contact() {
     if (isSending || cooldown > 0) return;
 
     setIsSending(true);
-
+    {/* https://protfolio-site-7inq.onrender.com */}
     try {
       const res = await fetch(
         "https://protfolio-site-7inq.onrender.com/send-email",
@@ -41,8 +41,8 @@ export default function Contact() {
           message: "",
         });
 
-        // ⏳ start 15 sec cooldown
-        setCooldown(10);
+        // ⏳ start 7 sec cooldown
+        setCooldown(7);
 
         const timer = setInterval(() => {
           setCooldown((prev) => {
@@ -54,7 +54,7 @@ export default function Contact() {
           });
         }, 1000);
       } else {
-        alert("Failed ❌");
+        alert("Please wait few Minutes. Too much Requests");
       }
     } catch (err) {
       alert("Error sending message ❌");

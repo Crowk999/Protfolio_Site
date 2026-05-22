@@ -2,9 +2,9 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, EmailStr, Field
 from fastapi.middleware.cors import CORSMiddleware
+
 import smtplib
 from email.mime.text import MIMEText
-from fastapi.responses import JSONResponse
 from fastapi import Request
 
 # Env for email
@@ -13,30 +13,15 @@ import os
 load_dotenv()
 
 # For Rate Limiting
-from slowapi import Limiter
+from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-from slowapi.middleware import SlowAPIMiddleware
 
 
-
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
-
-def rate_limit_handler(request, exc: RateLimitExceeded):
-    return JSONResponse(
-        status_code=429,
-        content={
-            "error": "RATE_LIMIT_EXCEEDED",
-            "detail": "Too many requests. Please wait and try again.",
-            "retry_after_seconds": 90
-        }
-    )
-
-# Limit setting
-limiter = Limiter(key_func = get_remote_address)
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
-app.add_middleware(SlowAPIMiddleware)
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 #  CORS SETTINGS
@@ -50,13 +35,13 @@ app.add_middleware(
 
 
 class Message(BaseModel):
-    name: str = Field(..., min_length=4, max_length=15)
+    name: str = Field(..., min_length=3, max_length=15)
     email: str
-    message: str = Field(..., min_length=3, max_length=500)
+    message: str = Field(..., min_length=10, max_length=500)
 
 
 @app.post("/send-email")
-@limiter.limit("1/90 seconds")
+@limiter.limit("3 per 5 minutes")
 async def send_email(request: Request, data: Message):
     sender_email = os.getenv("MY_EMAIL")
     receiver_email = os.getenv("MY_EMAIL")
@@ -64,6 +49,7 @@ async def send_email(request: Request, data: Message):
 
     try:
         msg = MIMEText(f"""
+        See This is your Email from Protfolio Site.
         Name: {data.name}
         Email: {data.email}
         Message: {data.message}
@@ -79,7 +65,11 @@ async def send_email(request: Request, data: Message):
         server.send_message(msg)
         server.quit()
 
+        #print("Email Went")
         return {"message": "Email sent successfully"}
 
     except Exception as e:
+        
+        #print("Message didnt went")
+        #print("eror:", str(e))
         return {"error": str(e)}
