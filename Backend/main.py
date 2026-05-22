@@ -65,11 +65,11 @@ async def send_email(request: Request, data: Message):
         server.send_message(msg)
         server.quit()
 
-        #print("Email Went")
+        print("Email Went")
         return {"message": "Email sent successfully"}
 
     except Exception as e:
         
-        #print("Message didnt went")
-        #print("eror:", str(e))
+        print("Message didnt went")
+        print("eror:", str(e))
         return {"error": str(e)}
