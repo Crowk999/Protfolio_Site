@@ -21,7 +21,7 @@ export default function Contact() {
     {/* https://protfolio-site-7inq.onrender.com */}
     try {
       const res = await fetch(
-        "https://protfolio-site-7inq.onrender.com/send-email",
+        "http://127.0.0.1:8000/send-email",
         {
           method: "POST",
           headers: {
