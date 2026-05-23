@@ -1,11 +1,10 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pydantic import BaseModel, EmailStr, Field
 from fastapi.middleware.cors import CORSMiddleware
 
-import smtplib
-from email.mime.text import MIMEText
-from fastapi import Request
+import resend
+#import smtplib from email.mime.text import MIMEText from fastapi import Request
 
 # Env for email
 from dotenv import load_dotenv
@@ -27,49 +26,39 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 #  CORS SETTINGS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://adhrit-site.vercel.app", "http://localhost:3000"],
+    allow_origins=["https://adhrit-site.vercel.app",
+                    "http://localhost:3000"],
     allow_credentials=True,
-    allow_methods=["POST"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
 class Message(BaseModel):
     name: str = Field(..., min_length=3, max_length=15)
-    email: str
+    email: EmailStr
     message: str = Field(..., min_length=10, max_length=500)
 
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 @app.post("/send-email")
 @limiter.limit("3 per 5 minutes")
-async def send_email(request: Request, data: Message):
-    sender_email = os.getenv("MY_EMAIL")
-    receiver_email = os.getenv("MY_EMAIL")
-    password = os.getenv("EMAIL_PASS") 
-
+async def send_email(request:Request, data: Message): 
     try:
-        msg = MIMEText(f"""
-        See This is your Email from Protfolio Site.
-        Name: {data.name}
-        Email: {data.email}
-        Message: {data.message}
-        """)
-
-        msg["Subject"] = "Message from Personal Site"
-        msg["From"] = sender_email
-        msg["To"] = receiver_email
-
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(sender_email, password)
-        server.send_message(msg)
-        server.quit()
-
-        print("Email Went")
+        resend.Emails.send({
+                "from": "Portfolio <onboarding@resend.dev>",
+                "to": os.getenv("MY_EMAIL"),
+                "subject": "Message from Site",
+                "html": f"""
+                    Name: {data.name}<br>
+                    Email: {data.email}<br>
+                    Message: {data.message}
+                """
+            })
+        print("response")
         return {"message": "Email sent successfully"}
-
+    
     except Exception as e:
-        
         print("Message didnt went")
         print("eror:", str(e))
         return {"error": str(e)}
