@@ -4,14 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { useEffect } from "react";
 const projects = [
+  
   {
-    title: "E-Commerce Platform",
+    title: "E-Commerce Project",
     description:
-      "Full-stack shopping platform with authentication, great logic , and admin dashboard.",
-    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_23-4-2026_202044_localhost.jpeg?updatedAt=1776955016010",
-    tags: ["React", "Django", "MySQL", "Tailwind CSS"],
-    link: "https://github.com/Crowk999/Ecom_Store",
-    videoId:null,
+    "Full-stack shopping platform with authentication, data storage, adding product and admin dashboard.",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png",
+    tags: ["NextJs", "Django", "MySQL", "Tailwind CSS", "SupaBase"],
+    link: "https://adhrit-store.vercel.app/",
+    videoId:"7YgcpBKTULo?si=2w5tfkaY1l_2pMvH",
   },
   
   {
@@ -57,16 +58,16 @@ const projects = [
     image: null,
     tags: ["Python", "OpenCV", "MediaPipe"],
     link: "https://github.com/Crowk999/Air-Canvas",
-    videoId:null,
+    videoId:"gkJjknMv4ys?si=vwhpm4Xpi7NW0O-x",
   },
   {
-    title: "E-Commerce Project",
+    title: "E-Commerce Platform",
     description:
-    "Full-stack shopping platform with authentication, data storage, adding product and admin dashboard.",
-    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png",
-    tags: ["NextJs", "Django", "MySQL", "Tailwind CSS", "SupaBase"],
-    link: "https://adhrit-store.vercel.app/",
-    videoId:"7YgcpBKTULo?si=2w5tfkaY1l_2pMvH",
+      "Full-stack shopping platform with authentication, great logic , and admin dashboard.",
+    image: "https://ik.imagekit.io/8pckwj2wc/Screenshot_23-4-2026_202044_localhost.jpeg?updatedAt=1776955016010",
+    tags: ["React", "Django", "MySQL", "Tailwind CSS"],
+    link: "https://github.com/Crowk999/Ecom_Store",
+    videoId:null,
   },
 ];
 
