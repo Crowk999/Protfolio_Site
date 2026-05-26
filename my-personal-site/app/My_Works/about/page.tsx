@@ -59,15 +59,36 @@ export default function Home() {
           style={{ background: "radial-gradient(circle, rgba(93,202,165,0.06) 0%, transparent 70%)" }} />
 
         {/* ── Badge ── */}
-        <div className="inline-flex items-center gap-2 mb-8 px-4 py-[6px] rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm">
+        <div className="inline-flex items-center gap-3 mb-8 px-4 py-[6px] 
+                rounded-full border border-white/10 
+                bg-white/[0.04] backdrop-blur-md
+                shadow-[0_0_18px_rgba(16,185,129,0.08)]">
+
+          {/* AI / ML side indicator */}
+          <span className="relative flex items-center gap-1">
+            <span className="relative flex h-[7px] w-[7px]">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40" />
+              <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-500" />
+            </span>
+          </span>
+
+          {/* Divider */}
+          <span className="text-white/20 text-[10px]">|</span>
+
+          {/* Label */}
+          <span
+            className="text-[12px] font-medium text-white/60 tracking-widest uppercase"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            AI / ML + Full Stack Developer
+          </span>
+
+          {/* Full Stack side indicator */}
           <span className="relative flex h-[7px] w-[7px]">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
-            <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-[#1D9E75]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40" />
+            <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-blue-500" />
           </span>
-          <span className="text-[12px] font-medium text-white/40 tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            Full Stack Developer
-          </span>
+
         </div>
 
         {/* ── Heading ── */}
@@ -94,36 +115,53 @@ export default function Home() {
         </p>
 
         {/* ── Motivational quote ── */}
-        <div className="relative inline-block mt-6 mb-10 px-6 py-4 rounded-2xl border border-white/[0.07] bg-white/[0.03]">
-          <span className="absolute -top-3 left-6 text-3xl text-[#1D9E75] leading-none select-none">"</span>
-          <p
-            className="text-[13px] text-white/30 italic leading-relaxed max-w-sm transition-opacity duration-300"
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              opacity: fade ? 1 : 0,
-            }}
-          >
-            {quotes[index]}
-          </p>
-          <div className="flex justify-center gap-[5px] mt-3">
-            {quotes.map((_, i) => (
-              <span
-                key={i}
-                onClick={() => {
-                  setFade(false);
-                  setTimeout(() => { setIndex(i); setFade(true); }, 300);
-                }}
-                className="cursor-pointer rounded-full transition-all duration-300"
-                style={{
-                  width: i === index ? "16px" : "5px",
-                  height: "5px",
-                  background: i === index ? "#1D9E75" : "rgba(255,255,255,0.15)",
-                }}
-              />
-            ))}
-          </div>
-          <span className="absolute -bottom-4 right-6 text-3xl text-[#1D9E75] leading-none select-none rotate-180">"</span>
-        </div>
+        <div className="relative inline-block mt-6 mb-10 px-7 py-6 md:px-8 md:py-7 rounded-2xl border border-white/[0.08] bg-[#050607]/60 backdrop-blur-xl">
+
+  {/* terminal header line */}
+  <div className="flex items-center gap-2 mb-3 text-[11px] font-mono text-white/30">
+    <span className="text-emerald-400">$</span>
+    <span>echo quote</span>
+  </div>
+
+  {/* output */}
+  <div className="relative">
+    <span className="absolute -top-1 left-0 text-emerald-400 text-xs font-mono">
+      output:
+    </span>
+
+    <p
+      className="text-[16px] md:text-[18px] text-white/40 leading-relaxed pt-4 pl-1 max-w-sm transition-opacity duration-300 font-mono"
+      style={{
+        opacity: fade ? 1 : 0,
+      }}
+    >
+      {quotes[index]}
+    </p>
+  </div>
+
+  {/* dots */}
+  <div className="flex justify-center gap-2 mt-5">
+    {quotes.map((_, i) => (
+      <span
+        key={i}
+        onClick={() => {
+          setFade(false);
+          setTimeout(() => {
+            setIndex(i);
+            setFade(true);
+          }, 300);
+        }}
+        className="cursor-pointer transition-all duration-300 rounded-sm"
+        style={{
+          width: i === index ? "18px" : "6px",
+          height: "4px",
+          background: i === index ? "#10b981" : "rgba(255,255,255,0.12)",
+        }}
+      />
+    ))}
+  </div>
+
+</div>
 
         {/* ── Ticker rows ── */}
         <div className="w-full overflow-hidden mb-2 py-1 relative">
@@ -349,70 +387,128 @@ export default function Home() {
   </section>
 
       {/* PROJECT PREVIEW */}
-      <section>
-        <div className="flex justify-between items-end mb-10">
+      <section className="py-16 md:py-24">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-10">
+
           <div>
-            <h2 className="text-3xl font-semibold mb-2">Selected Work</h2>
-            <p className="text-gray-500 text-sm">
-              A few recent projects I’ve worked on
+            <div className="flex items-center gap-2 mb-2 text-emerald-400 font-mono text-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              system: projects.scan()
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
+              Selected Work
+            </h2>
+
+            <p className="text-white/50 text-base mt-2">
+              output: recent builds and real-world experiments
             </p>
           </div>
 
           <Link
             href="/My_Works/Project1"
-            className="text-sm text-gray-500 hover:text-white transition"
+            className="text-base text-white/50 hover:text-white transition font-mono"
           >
-            View all →
+            view_all --projects →
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          
-          <div className="group border rounded-2xl p-6 hover:shadow-lg transition duration-300">
-            <Link href="https://adhrit-store.vercel.app/">
-            <div className="h-40 mb-4 overflow-hidden rounded-lg">
-              <img
-                src="https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png"
-                alt="Ecommerce Site"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
 
-            <h3 className="font-semibold text-lg mb-2">
-              Ecommerce Site
-            </h3>
+          {/* Project 1 */}
+          <div className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-emerald-400/30 transition">
 
-            <p className="text-sm text-gray-600 mb-4">
-              A Ecommerce Site where admin can upload products people can login and save and buy products.
-            </p>
+            <Link
+              href="https://adhrit-store.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
 
-            <span className="text-sm underline cursor-pointer">
-              View Project
-            </span>
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10 bg-black/30">
+                <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
+                <span className="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+                <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
+
+                <span className="ml-3 text-sm text-white/50 font-mono">
+                  ecommerce.build.log
+                </span>
+              </div>
+
+              {/* Image */}
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://ik.imagekit.io/8pckwj2wc/Screenshot%202026-05-15%20at%2014-16-35%20.png"
+                  alt="Ecommerce Site"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Ecommerce System
+                </h3>
+
+                <p className="text-base text-white/60 leading-relaxed mb-4">
+                  Full-stack ecommerce platform with authentication, product upload system, cart flow, and admin control.
+                </p>
+
+                <div className="text-sm font-mono text-emerald-400">
+                  status: deployed
+                </div>
+              </div>
+
             </Link>
           </div>
 
-          <div className="group border rounded-2xl p-6 hover:shadow-lg transition duration-300">
-            <Link href="https://crowk999.github.io/Chess/chess.html" target="_blank">
-            <div className="h-40 mb-4 overflow-hidden rounded-lg">
-              <img
-                src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg"
-                alt="Chess"
-                className="w-full h-full object-contain"
-              />
-            </div>
+          {/* Project 2 */}
+          <div className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-blue-400/30 transition">
 
-            <h3 className="font-semibold text-lg mb-2">
-              Chess Game
-            </h3>
+            <Link
+              href="https://crowk999.github.io/Chess/chess.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
 
-            <p className="text-sm text-gray-600 mb-4">
-              A Fun Chess Game to play with each other in free times.
-            </p>
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10 bg-black/30">
+                <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
+                <span className="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+                <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
 
-            <span className="text-sm underline cursor-pointer">
-              View Project
-            </span>
+                <span className="ml-3 text-sm text-white/50 font-mono">
+                  chess.runtime.log
+                </span>
+              </div>
+
+              {/* Image */}
+              <div className="h-48 overflow-hidden bg-black">
+                <img
+                  src="https://ik.imagekit.io/8pckwj2wc/Screenshot_20-4-2026_214749_crowk999.github.io.jpeg"
+                  alt="Chess"
+                  className="w-full h-full object-contain group-hover:scale-105 transition duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Chess Engine UI
+                </h3>
+
+                <p className="text-base text-white/60 leading-relaxed mb-4">
+                  Interactive chess interface built for real-time gameplay, logic testing, and UI experimentation.
+                </p>
+
+                <div className="text-sm font-mono text-blue-400">
+                  status: live
+                </div>
+              </div>
+
             </Link>
           </div>
 
@@ -420,44 +516,55 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden py-24">
+      <section className="relative overflow-hidden py-20 md:py-28">
 
-      {/* 🌈 background glow blobs */}
-      <div className="absolute -top-10 -left-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"></div>
-      <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full"></div>
+        {/* 🌈 Soft ambient glow (controlled, not noisy) */}
+        <div className="absolute -top-20 -left-20 w-72 md:w-96 h-72 md:h-96 bg-blue-500/20 blur-[120px] rounded-full" />
+        <div className="absolute -bottom-20 -right-20 w-72 md:w-96 h-72 md:h-96 bg-purple-500/20 blur-[120px] rounded-full" />
 
-      {/* 📦 main card */}
-      <div className="relative max-w-4xl mx-auto text-center px-6 py-14 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-xl hover:shadow-blue-500/10 transition">
+        {/* subtle grid overlay */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,white_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-        {/* heading */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
-          Let’s build something great
-        </h2>
+        {/* 📦 Card */}
+        <div className="relative max-w-3xl mx-auto text-center px-6 py-12 md:py-16
+                        rounded-3xl border border-white/10
+                        bg-white/[0.03] backdrop-blur-2xl
+                        shadow-[0_0_60px_rgba(0,0,0,0.4)]
+                        hover:border-white/20 transition-all duration-300">
 
-        {/* subtext */}
-        <p className="text-white/60 mb-8 max-w-xl mx-auto">
-          I’m open to freelance work, collaborations, and interesting ideas.
-          If you have something exciting, let’s bring it to life.
-        </p>
+          {/* heading */}
+          <h2 className="text-2xl md:text-4xl font-semibold text-white tracking-tight">
+            Let’s build something <span className="text-blue-400">great</span>
+          </h2>
 
-        {/* CTA button */}
-        <Link
-          href="/My_Works/Contacts"
-          className="inline-block px-8 py-3 rounded-xl bg-white text-black font-medium
-          transition-all duration-300
-          hover:scale-105 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]
-          active:scale-95"
-        >
-          Get in touch
-        </Link>
+          {/* subtext */}
+          <p className="mt-4 text-sm md:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
+            I’m open to freelance work, collaborations, and impactful ideas.
+            If you’re building something meaningful, let’s turn it into reality.
+          </p>
 
-        {/* small trust line */}
-        <p className="mt-6 text-xs text-white/40">
-          Usually replies within 24 hours ⚡
-        </p>
+          {/* CTA button */}
+          <Link
+            href="/My_Works/Contacts"
+            className="mt-8 inline-flex items-center justify-center
+                      px-6 md:px-8 py-3 rounded-xl
+                      bg-gradient-to-r from-white to-gray-200
+                      text-black font-medium text-sm md:text-base
+                      transition-all duration-300
+                      hover:scale-[1.05]
+                      hover:shadow-[0_0_30px_rgba(59,130,246,0.35)]
+                      active:scale-95"
+          >
+            Get in touch
+          </Link>
 
-      </div>
-    </section>
+          {/* trust line */}
+          <p className="mt-6 text-[11px] md:text-xs text-white/40">
+            Usually replies within 24 hours ⚡
+          </p>
+
+        </div>
+      </section>
 
     </div>
   );

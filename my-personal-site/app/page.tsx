@@ -267,77 +267,68 @@ export default function HeroSection() {
       </div>
 
       {/* ── Nepal origin ── */}
-      <div className="mt-5 pt-4 border-t border-white/[0.05]">
-        <div className="flex items-center justify-between px-1">
+      <div className="mt-6 pt-5 border-t border-white/[0.06]">
 
-          {/* Left — flag stripe + location */}
-          <div className="flex items-center gap-3">
-            {/* Nepal flag color stripes */}
-            <div className="flex gap-[3px]">
-              <div className="w-[3px] h-8 rounded-full bg-[#DC143C]" />
-              <div className="w-[3px] h-8 rounded-full bg-[#003893]" />
-              <div className="w-[3px] h-8 rounded-full bg-[#FFFFFF]/20" />
-            </div>
-            <div className="flex flex-col gap-[3px]">
-              <span
-                className="text-[8px] tracking-[.16em] text-white/20 uppercase"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                based in
-              </span>
-              <span
-                className="text-[13px] font-semibold text-white/60"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                🇳🇵 Kathmandu, Nepal
-              </span>
-              <span
-                className="text-[9px] text-white/20"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                UTC +5:45 · only ±45min zone
-              </span>
-            </div>
-          </div>
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 px-1">
 
-          {/* Right — availability */}
-          <div className="flex flex-col items-end gap-[4px]">
-            <div className="flex items-center gap-[5px]">
-              <span className="w-[6px] h-[6px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
-              <span
-                className="text-[10px] text-[#5DCAA5] tracking-[.08em] uppercase"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                available
-              </span>
-            </div>
-            <span
-              className="text-[9px] text-white/20"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              open to remote
-            </span>
-          </div>
+    {/* LEFT — Location */}
+    <div className="flex items-center gap-4">
 
-        </div>
+      {/* Flag */}
+      <div className="flex flex-col gap-[3px]">
+        <div className="w-[3px] h-10 rounded-full bg-[#DC143C]" />
+        <div className="w-[3px] h-10 rounded-full bg-[#003893]" />
+        <div className="w-[3px] h-10 rounded-full bg-white/20" />
       </div>
 
-      {/* Keyframe styles injected globally */}
-      <style>{`
-        @keyframes pulseGreen {
-          0%, 100% { opacity: 1; }
-          50%       { opacity: .3; }
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50%       { opacity: 0; }
-        }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+      {/* Text */}
+      <div className="flex flex-col leading-tight">
+
+        <span className="text-[11px] tracking-[0.25em] text-white/30 uppercase font-mono">
+          based in
+        </span>
+
+        <span
+          className="text-[15px] md:text-[16px] font-semibold text-white/75"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+        >
+          🇳🇵 Kathmandu, Nepal
+        </span>
+
+        <span className="text-[12px] text-white/30 font-mono">
+          UTC +5:45 · Nepal Standard Time
+        </span>
+
+      </div>
     </div>
+
+    {/* RIGHT — Availability */}
+    <div className="flex items-center sm:flex-col sm:items-end gap-3 sm:gap-1">
+
+      <div className="flex items-center gap-2">
+
+        <span className="relative flex h-[7px] w-[7px]">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40" />
+          <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-500" />
+        </span>
+
+        <span className="text-[12px] text-emerald-300 uppercase tracking-wider font-mono">
+          available
+        </span>
+
+      </div>
+
+      <span className="text-[12px] text-white/30 font-mono">
+        open for remote work
+      </span>
+
+    </div>
+
+  </div>
+</div>
+      
+    </div>
+
   );
 }
 

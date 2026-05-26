@@ -18,6 +18,21 @@ export default function Navbar() {
   // Close sidebar on route change
   useEffect(() => { closeMenu(); }, [pathname]);
 
+  // Closing scroll when side bar opened 
+  
+
+useEffect(() => {
+  if (open) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [open]);
+
   const links = [
     { href: "/",                   label: "Home" },
     { href: "/My_Works/about",     label: "About" },

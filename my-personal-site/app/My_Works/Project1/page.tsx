@@ -71,8 +71,6 @@ const projects = [
   },
 ];
 
-
-
 export default function Project() {
   const[videoId, setVideoId] = useState<string | null>(null);
   const[videoIsOpen, setVideoIsOpen] = useState(false);
@@ -106,17 +104,37 @@ export default function Project() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-purple-600/10 blur-[180px] -z-10" />
 
       {/* 🧠 header */}
-      <div className="relative text-center mb-20">
-        <h2 className="text-5xl md:text-6xl font-semibold tracking-tight">
-          Selected{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-white">
-            Work
+      <div className="relative text-center mb-24">
+        {/* background glow accent */}
+        <div className="absolute inset-0 flex justify-center items-center -z-10">
+          <div className="w-[280px] md:w-[420px] h-[120px] bg-white/10 blur-3xl rounded-full" />
+        </div>
+
+        <h2 className="relative text-5xl md:text-7xl font-semibold tracking-tight leading-none">
+
+          <span className="text-white/90">Selected</span>{" "}
+
+          <span className="relative inline-block">
+
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">
+              Work
+            </span>
+
+            {/* glow underline */}
+            <span className="absolute left-0 -bottom-3 w-full h-[3px] bg-gradient-to-r from-transparent via-white/40 to-transparent blur-md" />
+
+            {/* soft highlight glow behind word */}
+            <span className="absolute -inset-2 bg-white/5 blur-2xl rounded-xl -z-10" />
+
           </span>
+
         </h2>
 
-        <p className="text-white/40 mt-4 text-lg">
-          Real projects. Real systems. No fluff.
+        {/* subtitle */}
+        <p className="mt-6 text-white/40 text-base md:text-lg tracking-wide max-w-xl mx-auto leading-relaxed">
+          Real projects. Built with intent. No fluff.
         </p>
+
       </div>
 
       {/* 🚀 grid */}
