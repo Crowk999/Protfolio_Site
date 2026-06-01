@@ -9,10 +9,13 @@ const groups = [
     chips: [
       { l: "Python", color: "blue" },
       { l: "Django", color: "teal" },
-      { l: "FastAPI", color: "mint" },
+      { l: "FastAPI", color: "orange" },
+      { l: "Pydantic", color: "mint" },
       { l: "LangChain", color: "purple" },
       { l: "Scikit Learn", color: "blue" },
       { l: "PyTorch", color: "orange" },
+      { l: "Numpy", color: "blue" },
+      { l: "Pandas", color: "teal" },
     ],
   },
   {
@@ -33,6 +36,8 @@ const groups = [
       { l: "MySQL", color: "orange" },
       { l: "MongoDB", color: "green" },
       { l: "Vercel", color: "white" },
+      { l: "Figma", color: "teal" },
+      { l: "Render", color: "yellow" },
     ],
   },
 ];
