@@ -173,7 +173,7 @@ export default function HeroSection() {
               </div>
             ))}
             {/* for that spining orbit */}
-            <div>
+            <div className="flex justify-center md:block">
               <OrbitWidget />
             </div>
           </div>
@@ -272,39 +272,39 @@ export default function HeroSection() {
       </div>
 
       {/* ── Nepal origin ── */}
-      <div className="mt-6 pt-5 border-t border-white/[0.06]">
+    <div className="mt-6 pt-5 border-t border-white/[0.06]">
 
-  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 px-1">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 px-1">
 
-    {/* LEFT — Location */}
-    <div className="flex items-center gap-4">
+      {/* LEFT — Location */}
+      <div className="flex items-center gap-4">
 
-      {/* Flag */}
-      <div className="flex flex-col gap-[3px]">
-        <div className="w-[3px] h-10 rounded-full bg-[#DC143C]" />
-        <div className="w-[3px] h-10 rounded-full bg-[#003893]" />
-        <div className="w-[3px] h-10 rounded-full bg-white/20" />
-      </div>
+        {/* Flag */}
+        <div className="flex flex-col gap-[3px]">
+          <div className="w-[3px] h-10 rounded-full bg-[#DC143C]" />
+          <div className="w-[3px] h-10 rounded-full bg-[#003893]" />
+          <div className="w-[3px] h-10 rounded-full bg-white/20" />
+        </div>
 
-      {/* Text */}
-      <div className="flex flex-col leading-tight">
+        {/* Text */}
+        <div className="flex flex-col leading-tight">
 
-        <span className="text-[11px] tracking-[0.25em] text-white/30 uppercase font-mono">
-          based in
-        </span>
+          <span className="text-[11px] tracking-[0.25em] text-white/30 uppercase font-mono">
+            based in
+          </span>
 
-        <span
-          className="text-[15px] md:text-[16px] font-semibold text-white/75"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          🇳🇵 Kathmandu, Nepal
-        </span>
+          <span
+            className="text-[15px] md:text-[16px] font-semibold text-white/75"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            🇳🇵 Kathmandu, Nepal
+          </span>
 
-        <span className="text-[12px] text-white/30 font-mono">
-          UTC +5:45 · Nepal Standard Time
-        </span>
+          <span className="text-[12px] text-white/30 font-mono">
+            UTC +5:45 · Nepal Standard Time
+          </span>
 
-      </div>
+        </div>
     </div>
 
     {/* RIGHT — Availability */}
