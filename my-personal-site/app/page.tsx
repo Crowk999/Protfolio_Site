@@ -141,7 +141,7 @@ export default function HeroSection() {
               View projects ↗
             </Link>
             <Link
-              href="/My_Works/Contacts"
+              href="/My_Works/about"
               className="inline-flex items-center text-[12px] text-white/30 px-[18px] py-[9px] rounded-[8px] border border-white/10 transition-all hover:text-white/55 hover:border-white/20"
               style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
             >

@@ -253,7 +253,7 @@ export default function Home() {
     <div className="flex items-center gap-4 mb-10 max-w-5xl mx-auto">
       <div className="flex-1 h-px bg-white/[0.06]" />
       <span
-        className="text-[10px] tracking-[.18em] text-white/20 uppercase"
+        className="text-[12px] tracking-[.18em] text-white/50 uppercase"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         what i bring
@@ -528,7 +528,7 @@ export default function Home() {
         {/* Section label */}
         <div className="flex items-center gap-4 mb-10 max-w-5xl mx-auto">
           <div className="flex-1 h-px bg-white/[0.06]" />
-          <span className="text-[10px] tracking-[.2em] text-white/20 uppercase font-mono">
+          <span className="text-[12px] tracking-[.2em] text-white/50 uppercase font-mono">
             who i am
           </span>
           <div className="flex-1 h-px bg-white/[0.06]" />
