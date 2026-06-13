@@ -278,18 +278,18 @@ export default function Home() {
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Frontend
           </h3>
-          <span className="text-[9px] tracking-[.1em] text-[#85B7EB] uppercase border border-[rgba(55,138,221,0.25)] rounded px-[6px] py-[2px]"
+          <span className="text-[10px] tracking-[.1em] text-[#85B7EB] uppercase border border-[rgba(55,138,221,0.25)] rounded px-[6px] py-[2px]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             react / next
           </span>
         </div>
-        <p className="text-[13px] text-white/30 leading-relaxed mb-4"
+        <p className="text-[14px] text-white/30 leading-relaxed mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Crafting pixel-perfect, responsive interfaces with React, Next.js, and Tailwind CSS — fast by default, beautiful by design.
         </p>
         <div className="flex flex-wrap gap-[6px]">
           {["React", "Next.js", "TypeScript", "Tailwind"].map(t => (
-            <span key={t} className="text-[10px] text-[#85B7EB]/70 px-2 py-[3px] rounded-md border border-[rgba(55,138,221,0.2)] bg-[rgba(55,138,221,0.05)]"
+            <span key={t} className="text-[13px] text-[#85B7EB]/70 px-2 py-[3px] rounded-md border border-[rgba(55,138,221,0.2)] bg-[rgba(55,138,221,0.05)]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t}</span>
           ))}
         </div>
@@ -314,18 +314,18 @@ export default function Home() {
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Backend &amp; AI
           </h3>
-          <span className="text-[9px] tracking-[.1em] text-[#5DCAA5] uppercase border border-[rgba(29,158,117,0.3)] rounded px-[6px] py-[2px]"
+          <span className="text-[10px] tracking-[.1em] text-[#5DCAA5] uppercase border border-[rgba(29,158,117,0.3)] rounded px-[6px] py-[2px]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             python / ai
           </span>
         </div>
-        <p className="text-[13px] text-white/35 leading-relaxed mb-4"
+        <p className="text-[14px] text-white/35 leading-relaxed mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Building robust APIs and AI-powered systems with Django, FastAPI, LangChain & PyTorch — from REST endpoints to LLM pipelines.
         </p>
         <div className="flex flex-wrap gap-[6px]">
           {["Django", "FastAPI", "LangChain", "PyTorch"].map(t => (
-            <span key={t} className="text-[10px] text-[#5DCAA5]/70 px-2 py-[3px] rounded-md border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)]"
+            <span key={t} className="text-[13px] text-[#5DCAA5]/70 px-2 py-[3px] rounded-md border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t}</span>
           ))}
         </div>
@@ -345,18 +345,18 @@ export default function Home() {
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Design &amp; DevOps
           </h3>
-          <span className="text-[9px] tracking-[.1em] text-[#AFA9EC] uppercase border border-[rgba(127,119,221,0.25)] rounded px-[6px] py-[2px]"
+          <span className="text-[10px] tracking-[.1em] text-[#AFA9EC] uppercase border border-[rgba(127,119,221,0.25)] rounded px-[6px] py-[2px]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             deploy / design
           </span>
         </div>
-        <p className="text-[13px] text-white/30 leading-relaxed mb-4"
+        <p className="text-[14px] text-white/30 leading-relaxed mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           From pixel-perfect Figma designs to production deployments — shipping on Vercel, managing infra on Linux, and designing with AI tools.
         </p>
         <div className="flex flex-wrap gap-[6px]">
           {["Vercel", "Render", "Git", "Linux", "Figma", "AI Design"].map(t => (
-            <span key={t} className="text-[10px] text-[#AFA9EC]/70 px-2 py-[3px] rounded-md border border-[rgba(127,119,221,0.2)] bg-[rgba(83,74,183,0.06)]"
+            <span key={t} className="text-[13px] text-[#AFA9EC]/70 px-2 py-[3px] rounded-md border border-[rgba(127,119,221,0.2)] bg-[rgba(83,74,183,0.06)]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t}</span>
           ))}
         </div>
@@ -551,13 +551,13 @@ export default function Home() {
 
         {/* Title */}
         <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[15px] font-medium text-white/85">Hobbies</h3>
-          <span className="text-[9px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(245,158,11,0.25)] bg-[rgba(245,158,11,0.07)] text-[#FCD34D]">
+          <h3 className="text-[16px] font-medium text-white/85">Hobbies</h3>
+          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(245,158,11,0.25)] bg-[rgba(245,158,11,0.07)] text-[#FCD34D]">
             anime · books · tech
           </span>
         </div>
 
-        <p className="text-[12px] text-white/30 leading-relaxed mb-4">
+        <p className="text-[14px] text-white/30 leading-relaxed mb-4">
           Into anime, building things, and reading about startups. Always curious, always consuming something good.
         </p>
 
@@ -570,7 +570,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Anime</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">One Piece · AoT · Naruto</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
                 fav
               </span>
             </div>
@@ -581,8 +581,8 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Books</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">Zero to One · Atomic Habits</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                fav
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
+                love
               </span>
             </div>
 
@@ -592,6 +592,9 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Tech</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">AI · Open source · Side projects</div>
               </div>
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
+                life
+              </span>
             </div>
 
           </div>
@@ -599,7 +602,7 @@ export default function Home() {
           {/* Tags */}
           <div className="flex flex-wrap gap-[5px] mt-auto">
             {["One Piece", "Zero to One", "Building", "AI"].map(t => (
-              <span key={t} className="text-[9.5px] px-2 py-[3px] rounded font-mono border border-[rgba(245,158,11,0.18)] bg-[rgba(245,158,11,0.05)] text-[rgba(252,211,77,0.65)]">
+              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(245,158,11,0.18)] bg-[rgba(245,158,11,0.05)] text-[rgba(252,211,77,0.65)]">
                 {t}
               </span>
             ))}
@@ -632,13 +635,13 @@ export default function Home() {
 
         {/* Title */}
         <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[15px] font-medium text-white">Education</h3>
-          <span className="text-[9px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(29,158,117,0.3)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5]">
+          <h3 className="text-[16px] font-medium text-white">Education</h3>
+          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(29,158,117,0.3)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5]">
             neb · grade 12
           </span>
         </div>
 
-        <p className="text-[12px] text-white/35 leading-relaxed mb-4">
+        <p className="text-[14px] text-white/35 leading-relaxed mb-4">
           Grade 12 NEB student in Nepal, aiming for engineering — focused on Robotics & AI. Disciplined self-learner building beyond the classroom.
         </p>
 
@@ -651,7 +654,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">NEB Grade 12</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">Science · Nepal · Currently enrolled</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
                 active
               </span>
             </div>
@@ -662,7 +665,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Target GPA</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">4.0 GPA · SLC Board · Nepal</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
                 goal
               </span>
             </div>
@@ -673,7 +676,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Future Path</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">Engineering → Robotics & AI</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
                 plan
               </span>
             </div>
@@ -683,7 +686,7 @@ export default function Home() {
           {/* Tags */}
           <div className="flex flex-wrap gap-[5px] mt-auto">
             {["Robotics", "AI", "Engineering", "Self-learning", "Discipline"].map(t => (
-              <span key={t} className="text-[9.5px] px-2 py-[3px] rounded font-mono border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)] text-[rgba(93,202,165,0.75)]">
+              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)] text-[rgba(93,202,165,0.75)]">
                 {t}
               </span>
             ))}
@@ -705,13 +708,13 @@ export default function Home() {
 
         {/* Title */}
         <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[15px] font-medium text-white/85">Dreams</h3>
-          <span className="text-[9px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(127,119,221,0.25)] bg-[rgba(83,74,183,0.07)] text-[#AFA9EC]">
+          <h3 className="text-[16px] font-medium text-white/85">Dreams</h3>
+          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(127,119,221,0.25)] bg-[rgba(83,74,183,0.07)] text-[#AFA9EC]">
             unicorn gang
           </span>
         </div>
 
-        <p className="text-[12px] text-white/30 leading-relaxed mb-4">
+        <p className="text-[14px] text-white/30 leading-relaxed mb-4">
           Building Nepal's first unicorn — that's not a maybe, that's the plan. Earn while studying, explore the world, move fast.
         </p>
 
@@ -724,7 +727,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Nepal's First Unicorn</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">$1B startup · Built from Kathmandu</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(127,119,221,0.22)] bg-[rgba(83,74,183,0.1)] text-[#C4B5FD] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(127,119,221,0.22)] bg-[rgba(83,74,183,0.1)] text-[#C4B5FD] flex-shrink-0">
                 mission
               </span>
             </div>
@@ -735,7 +738,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Earn While Studying</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">Freelance · Products · No waiting</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
                 now
               </span>
             </div>
@@ -746,7 +749,7 @@ export default function Home() {
                 <div className="text-[12px] font-medium text-white/72 mb-[2px]">Explore the World</div>
                 <div className="text-[10px] text-white/28 font-mono truncate">Travel fast · Experience everything</div>
               </div>
-              <span className="text-[8.5px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
+              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
                 soon
               </span>
             </div>
@@ -756,7 +759,7 @@ export default function Home() {
           {/* Tags */}
           <div className="flex flex-wrap gap-[5px] mt-auto">
             {["Unicorn", "Nepal", "Startup", "Freedom", "Impact"].map(t => (
-              <span key={t} className="text-[9.5px] px-2 py-[3px] rounded font-mono border border-[rgba(127,119,221,0.2)] bg-[rgba(83,74,183,0.06)] text-[rgba(175,169,236,0.75)]">
+              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(127,119,221,0.2)] bg-[rgba(83,74,183,0.06)] text-[rgba(175,169,236,0.75)]">
                 {t}
               </span>
             ))}
