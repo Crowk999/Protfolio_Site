@@ -173,7 +173,7 @@ export default function Project() {
                 {project.title}
               </h3>
 
-              <p className="text-white/40 text-sm mt-2 leading-relaxed">
+              <p className="text-white/44 text-[16px] mt-2 leading-relaxed">
                 {project.description}
               </p>
 
@@ -182,7 +182,7 @@ export default function Project() {
                 {project.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="text-[11px] px-3 py-1 rounded-full bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 transition"
+                    className="text-[12px] px-3 py-1 rounded-full bg-white/6 text-white/55 border border-white/10 hover:bg-white/10 transition"
                   >
                     {tag}
                   </span>

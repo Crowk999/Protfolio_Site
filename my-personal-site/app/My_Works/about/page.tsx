@@ -393,25 +393,31 @@ export default function Home() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-10">
 
           <div>
-            <div className="flex items-center gap-2 mb-2 text-emerald-400 font-mono text-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              system: projects.scan()
+            <div className="flex items-center gap-2 mb-2 font-mono text-sm">
+              <span className="flex items-center gap-2 text-white/40 uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                system
+              </span>
+              <span className="text-white/70">projects.scan()</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
               Selected Work
             </h2>
 
-            <p className="text-white/50 text-base mt-2">
-              output: recent builds and real-world experiments
-            </p>
+            <p className="text-[20px] mt-2">
+            <span className="text-white font-medium mr-2">output:</span>
+            <span className="text-white/50 font-light">
+              crafted projects & practical explorations
+            </span>
+          </p>
           </div>
 
           <Link
             href="/My_Works/Project1"
-            className="text-base text-white/50 hover:text-white transition font-mono"
+            className="inline-block px-5 py-2 border border-white/20 text-white/70 hover:text-white hover:border-white/40 rounded-lg transition-all duration-300 font-mono"
           >
-            view_all --projects →
+            view all projects →
           </Link>
         </div>
 
@@ -458,7 +464,7 @@ export default function Home() {
                 </p>
 
                 <div className="text-sm font-mono text-emerald-400">
-                  status: deployed
+                  status: deployed & live
                 </div>
               </div>
 
