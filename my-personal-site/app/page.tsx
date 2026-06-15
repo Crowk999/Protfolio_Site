@@ -69,9 +69,9 @@ export default function HeroSection() {
           <span className="w-[10px] h-[10px] rounded-full bg-[#FFBD2E] block" />
           <span className="w-[10px] h-[10px] rounded-full bg-[#28C840] block" />
         </div>
-        <span className="text-[11px] text-white/[0.18] tracking-[.08em]">portfolio.adhrit.dev</span>
-        <div className="flex items-center gap-[5px] text-[10px] text-[#1D9E75] tracking-[.06em]">
-          <span className="w-[5px] h-[5px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
+        <span className="text-[13px] text-white/60 tracking-[.08em]">portfolio.adhrit.dev</span>
+        <div className="flex items-center gap-[5px] text-[13px] text-[#1D9E75] tracking-[.06em]">
+          <span className="w-[7px] h-[7px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
           live
         </div>
       </div>
@@ -87,17 +87,17 @@ export default function HeroSection() {
               className="flex items-center gap-2 mb-6"
               style={{ animation: mounted ? "fadeUp .4s ease both" : "none" }}
             >
-              <span className="text-[10px] tracking-[.1em] text-white/25 uppercase px-[9px] py-1 border border-white/[0.09] rounded-[4px]">
+              <span className="text-[12px] tracking-[.1em] text-white/25 uppercase px-[9px] py-1 border border-white/[0.09] rounded-[4px]">
                 v2.0
               </span>
               <span className="flex items-center gap-[5px] text-[10px] text-[#5DCAA5] tracking-[.07em] px-[9px] py-1 border border-[rgba(29,158,117,0.28)] rounded-[4px] bg-[rgba(29,158,117,0.07)]">
-                <span className="w-[5px] h-[5px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
+                <span className="w-[7px] h-[7px] text-[12px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
                 open to work
               </span>
             </div>
 
             {/* Name */}
-            <p className="text-[10px] tracking-[.14em] text-white/[0.18] uppercase mb-[6px]">// developer</p>
+            <p className="text-[13px] tracking-[.14em] text-white/[0.28] uppercase mb-[6px]">// developer</p>
             <h1
               className="text-[42px] sm:text-[50px] font-medium leading-[.95] tracking-[-0.04em] text-[#f0f0f2] mb-[6px]"
               style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
@@ -113,7 +113,7 @@ export default function HeroSection() {
             {/* Role row */}
             <div className="flex items-center gap-[10px] my-4">
               <div className="flex-1 h-px bg-white/[0.06]" />
-              <span className="text-[10px] tracking-[.1em] text-white/20 uppercase whitespace-nowrap">
+              <span className="text-[14px] tracking-[.1em] text-white/40 uppercase whitespace-nowrap">
                 Full-stack &amp; AI
               </span>
               <div className="flex-1 h-px bg-white/[0.06]" />
@@ -121,12 +121,12 @@ export default function HeroSection() {
 
             {/* Bio */}
             <p
-              className="text-[13px] text-white/35 leading-[1.8] max-w-[330px] mb-6"
+              className="text-[16px] text-white/45 leading-[1.8] max-w-[330px] mb-6"
               style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
             >
               Building{" "}
-              <strong className="text-white/60 font-medium">modern web apps</strong> and{" "}
-              <strong className="text-white/60 font-medium">AI-powered systems</strong> — clean
+              <strong className="text-white/70 font-medium">modern web apps</strong> and{" "}
+              <strong className="text-white/70 font-medium">AI-powered systems</strong> — clean
               Next.js frontends, Python backends with LangChain, Django &amp; PyTorch.
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/My_Works/about"
-              className="inline-flex items-center text-[12px] text-white/30 px-[18px] py-[9px] rounded-[8px] border border-white/10 transition-all hover:text-white/55 hover:border-white/20"
+              className="inline-flex items-center text-[13px] text-white/45 px-[18px] py-[9px] rounded-[8px] border border-white/10 transition-all hover:text-white/55 hover:border-white/20"
               style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
             >
               About me
@@ -169,7 +169,7 @@ export default function HeroSection() {
                 >
                   {val}
                 </div>
-                <div className="text-[9px] text-white/25 tracking-[.07em] uppercase">{lbl}</div>
+                <div className="text-[9px] text-white/50 tracking-[.07em] uppercase">{lbl}</div>
               </div>
             ))}
             {/* for that spining orbit */}
@@ -226,7 +226,7 @@ export default function HeroSection() {
         {/* Section header */}
         <div className="flex items-center gap-[10px] mb-4">
           <div className="flex-1 h-px bg-white/[0.06]" />
-          <span className="text-[9px] tracking-[.14em] text-white/[0.18] uppercase">tech stack</span>
+          <span className="text-[13px] tracking-[.14em] text-white/[0.44] uppercase">tech stack</span>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>
 
@@ -234,7 +234,7 @@ export default function HeroSection() {
         <div className="flex flex-col gap-[14px]">
           {groups.map((g) => (
             <div key={g.label} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-[10px]">
-              <span className="text-[9px] tracking-[.1em] text-white/20 uppercase sm:min-w-[72px] sm:text-right">
+              <span className="text-[12px] tracking-[.1em] text-white/30 uppercase sm:min-w-[72px] sm:text-right">
                 {g.label}
               </span>
               <div className="flex flex-wrap gap-[6px]">
@@ -243,15 +243,15 @@ export default function HeroSection() {
                     key={l}
                     className={`
                       inline-flex items-center gap-[5px] px-[10px] py-[5px] rounded-[6px] border
-                      text-[11px] font-medium tracking-[-0.01em] cursor-default
+                      text-[13px] font-medium tracking-[-0.01em] cursor-default
                       transition-transform duration-150 hover:-translate-y-[2px]
-                      relative before:content-[''] before:w-[4px] before:h-[4px] before:rounded-full before:flex-shrink-0
+                      relative before:content-[''] before:w-[5px] before:h-[5px] before:rounded-full before:flex-shrink-0
                       ${chipStyles[color]}
                     `}
                     style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
                   >
                     <span
-                      className={`w-[4px] h-[4px] rounded-full flex-shrink-0 ${
+                      className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${
                         color === "blue"   ? "bg-[#85B7EB]" :
                         color === "teal"   ? "bg-[#5DCAA5]" :
                         color === "mint"   ? "bg-[#9FE1CB]" :
@@ -317,13 +317,13 @@ export default function HeroSection() {
           <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-500" />
         </span>
 
-        <span className="text-[12px] text-emerald-300 uppercase tracking-wider font-mono">
+        <span className="text-[14px] text-emerald-300 uppercase tracking-wider font-mono">
           available
         </span>
 
       </div>
 
-      <span className="text-[12px] text-white/30 font-mono">
+      <span className="text-[14px] text-white/40 font-mono">
         open for remote work
       </span>
 
