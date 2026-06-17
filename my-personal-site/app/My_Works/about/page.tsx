@@ -105,9 +105,9 @@ export default function Home() {
         </h1>
 
         {/* ── Bio ── */}
-        <p className="text-[16px] text-white/35 max-w-xl mx-auto mb-3 leading-relaxed"
+        <p className="text-[18px] text-white/40 max-w-xl mx-auto mb-3 leading-relaxed"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          I design and develop fast, responsive websites — using{" "}
+          I design and develop fast, responsive websites and AI/ML powered backend systems — using{" "}
           <span className="text-white/70 font-semibold">Next.js, React & Tailwind</span> on the
           frontend and{" "}
           <span className="text-white/70 font-semibold">Django, FastAPI, PyTorch & LangChain</span>{" "}
