@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
    <html lang="en">
       <body>
-        <header>
+       <header className="sticky top-0 z-50 bg-black shadow-md">
           <NavBar />
         </header>
 
