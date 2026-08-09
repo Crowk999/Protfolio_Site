@@ -105,7 +105,7 @@ export default function HeroSection() {
             </div>
 
             {/*  Profile + Tag Row */}
-            <div className="flex items-center gap-3 -mt-12 mb-5">
+            <div className="flex items-center gap-3 -mt-6 mb-5">
 
               {/* Profile */}
               <img
@@ -122,7 +122,7 @@ export default function HeroSection() {
 
               {/* Tags */}
               <div
-                className="flex flex-wrap gap-2"
+                className="flex flex-wrap gap-2 pt-13"
                 style={{ animation: mounted ? "fadeUp .4s ease both" : "none" }}
               >
                 <span className="text-[11px] tracking-[.12em] text-white/25 uppercase px-[8px] py-[4px] border border-white/[0.09] rounded-[5px]">
