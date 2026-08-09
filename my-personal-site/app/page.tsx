@@ -94,7 +94,7 @@ export default function HeroSection() {
 
           <div>
 
-            {/* 🔴 Banner */}
+            {/*  Banner */}
             <div className="relative w-full h-32 sm:h-40 rounded-xl overflow-hidden mb-4">
               <img
                 src="https://ik.imagekit.io/8pckwj2wc/luffy_long.jpg"
@@ -104,7 +104,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/80" />
             </div>
 
-            {/* 🔵 Profile + Tag Row */}
+            {/*  Profile + Tag Row */}
             <div className="flex items-center gap-3 -mt-12 mb-5">
 
               {/* Profile */}
@@ -136,7 +136,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* 👨‍💻 Name */}
+            {/*  Name */}
             <p className="text-[12px] tracking-[.18em] text-white/[0.25] uppercase mb-[6px]">
               // developer
             </p>
@@ -158,7 +158,7 @@ export default function HeroSection() {
               <span className="inline-block w-[3px] h-[36px] sm:h-[42px] bg-[#5DCAA5] ml-[4px] align-middle animate-[blink_.9s_step-end_infinite]" />
             </h1>
 
-            {/* 🧩 Role */}
+            {/*  Role */}
             <div className="flex items-center gap-[10px] my-4">
               <div className="flex-1 h-px bg-white/[0.06]" />
               <span className="text-[13px] tracking-[.12em] text-white/40 uppercase whitespace-nowrap">
@@ -167,7 +167,7 @@ export default function HeroSection() {
               <div className="flex-1 h-px bg-white/[0.06]" />
             </div>
 
-            {/* 🧾 Bio */}
+            {/*  Bio */}
             <p
               className="text-[15px] text-white/50 leading-[1.75] max-w-[360px] mb-6"
               style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
@@ -179,7 +179,7 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* 🔘 Buttons */}
+          {/*  Buttons */}
           <div className="flex gap-2 flex-wrap">
             <Link
               href="/My_Works/Project1"
