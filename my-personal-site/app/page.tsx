@@ -83,7 +83,7 @@ export default function HeroSection() {
         <span className="text-[13px] text-white/60 tracking-[.08em]">portfolio.adhrit.dev</span>
         <div className="flex items-center gap-[5px] text-[13px] text-[#1D9E75] tracking-[.06em]">
           <span className="w-[7px] h-[7px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
-          live
+          livee
         </div>
       </div>
 
