@@ -30,7 +30,7 @@ const groups = [
     ],
   },
   {
-    label: "tools",
+    label: "tools & infrastructure",
     chips: [
       { l: "Linux", color: "mint" },
       { l: "Git", color: "purple" },
@@ -42,10 +42,11 @@ const groups = [
     ],
   },
   {
-    label: "lowlevel language",
+    label: "systems & scripting",
     chips: [
       { l: "C", color: "mint" },
       { l: "Rust", color: "purple" },
+      { l: "Bash", color: "green" },
       
     ],
   },
