@@ -30,7 +30,7 @@ const groups = [
     ],
   },
   {
-    label: "tools & infrastructure",
+    label: "tools",
     chips: [
       { l: "Linux", color: "mint" },
       { l: "Git", color: "purple" },
