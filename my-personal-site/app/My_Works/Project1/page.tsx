@@ -69,6 +69,15 @@ const projects = [
     link: "https://github.com/Crowk999/Ecom_Store",
     videoId:null,
   },
+  {
+    title: "Bash Automate Codes",
+    description:
+      "Some of the bash codes to automate repetative task. Very useful for programmers",
+    image: null,
+    tags: ["Bash", "Automation", "Scripting", ],
+    link: "https://github.com/Crowk999/Bash-Script-Project.git",
+    videoId:null,
+  },
 ];
 
 export default function Project() {
