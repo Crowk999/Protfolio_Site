@@ -522,327 +522,278 @@ export default function Home() {
       </section>
 
       {/* Detail section */}
-      <section className="relative overflow-hidden bg-[#060609] py-16 px-4">
-        {/* Grid bg */}
-        <div className="absolute inset-0 -z-10"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
-
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-10 max-w-5xl mx-auto">
-          <div className="flex-1 h-px bg-white/[0.06]" />
-          <span className="text-[12px] tracking-[.2em] text-white/50 uppercase font-mono">
-            who i am
-          </span>
-          <div className="flex-1 h-px bg-white/[0.06]" />
-        </div>
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-
-          {/* Hobbies */}
-          <div className="group relative p-6 rounded-2xl border border-white/[0.07] bg-[#0d0f14] hover:border-[rgba(245,158,11,0.2)] hover:bg-[#111420] transition-all duration-250 overflow-hidden flex flex-col">
-
-        {/* Glow */}
-        <div className="absolute -top-8 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle,rgba(245,158,11,0.13) 0%,transparent 70%)" }} />
-
-        {/* Icon */}
-        <div className="w-[38px] h-[38px] rounded-[10px] border border-[rgba(245,158,11,0.25)] bg-[rgba(245,158,11,0.09)] flex items-center justify-center mb-4 text-[17px]">
-          🎧
-        </div>
-
-        {/* Title */}
-        <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[16px] font-medium text-white/85">Hobbies</h3>
-          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(245,158,11,0.25)] bg-[rgba(245,158,11,0.07)] text-[#FCD34D]">
-            anime · books · tech
-          </span>
-        </div>
-
-        <p className="text-[14px] text-white/30 leading-relaxed mb-4">
-          Into anime, building things, and reading about startups. Always curious, always consuming something good.
-        </p>
-
-        {/* Hobby rows */}
-        <div className="flex flex-col gap-[7px] mb-4">
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(245,158,11,0.05)] hover:border-[rgba(245,158,11,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">📺</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Anime</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">One Piece · AoT · Naruto</div>
+      {/* DEVELOPER SIGNAL */}
+      <section className="relative overflow-hidden bg-[#060609] px-4 py-10 md:py-14">
+        <div className="mx-auto max-w-5xl">
+          <div className="relative">
+            {/* Perimeter track */}
+            <div className="pointer-events-none absolute -inset-[18px] z-20">
+              <div className="absolute inset-0 rounded-[32px] border border-white/[0.035]" />
+              {/* Signal 1 */}
+              <div className="absolute inset-0 animate-[signalOrbit_7s_linear_infinite]">
+                <span className="absolute left-1/2 -top-[4px] h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-[#A78BFA] shadow-[0_0_16px_4px_rgba(167,139,250,0.5)]" />
               </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                fav
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(245,158,11,0.05)] hover:border-[rgba(245,158,11,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">📖</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Books</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">Zero to One · Atomic Habits</div>
+              {/* Signal 2 */}
+              <div className="absolute inset-0 animate-[signalOrbitReverse_10s_linear_infinite]">
+                <span className="absolute left-1/2 -top-[3px] h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-[#60A5FA] shadow-[0_0_14px_3px_rgba(96,165,250,0.45)]" />
               </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                love
-              </span>
             </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(245,158,11,0.05)] hover:border-[rgba(245,158,11,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">💻</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Tech</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">AI · Open source · Side projects</div>
+            {/* Main panel */}
+            <div className="relative z-10 flex flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.018] md:flex-row md:items-stretch">
+              {/* Identity */}
+              <div className="px-6 py-7 md:w-[38%] md:px-8 md:py-8">
+                <div className="mb-3 flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#A78BFA] shadow-[0_0_10px_rgba(167,139,250,0.7)]" />
+                  <span className="font-mono text-xs uppercase tracking-[.16em] text-[#A78BFA]/80">current state</span>
+                </div>
+                <h3 className="text-xl font-semibold tracking-tight text-white/90 md:text-2xl">Building. Learning. Exploring.</h3>
+                <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/40">A few things currently shaping what I build.</p>
               </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.2)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                life
-              </span>
+              {/* Divider */}
+              <div className="hidden w-px self-stretch bg-white/[0.07] md:block" />
+              {/* Details */}
+              <div className="grid flex-1 grid-cols-1 border-t border-white/[0.07] sm:grid-cols-3 md:border-t-0">
+                {/* Education */}
+                <div className="group border-b border-white/[0.07] px-6 py-7 transition hover:bg-white/[0.025] sm:border-b-0 sm:border-r">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-white/25">studying</span>
+                  <p className="mt-3 text-base text-white/80 transition group-hover:text-white">Grade 12</p>
+                  <p className="mt-1 text-sm text-white/35">Science · Nepal</p>
+                </div>
+                {/* Interests */}
+                <div className="group border-b border-white/[0.07] px-6 py-7 transition hover:bg-white/[0.025] sm:border-b-0 sm:border-r">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-white/25">exploring</span>
+                  <p className="mt-3 text-base text-white/80 transition group-hover:text-[#A78BFA]">AI · Robotics</p>
+                  <p className="mt-1 text-sm text-white/35">Systems & hardware</p>
+                </div>
+                {/* Outside code */}
+                <div className="group px-6 py-7 transition hover:bg-white/[0.025]">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-white/25">off screen</span>
+                  <p className="mt-3 text-base text-white/80 transition group-hover:text-[#60A5FA]">Anime · Books</p>
+                  <p className="mt-1 text-sm text-white/35">Curiosity never stops</p>
+                </div>
+              </div>
+              {/* Ambient glow */}
+              <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#A78BFA]/[0.05] blur-3xl" />
             </div>
-
           </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-[5px] mt-auto">
-            {["One Piece", "Zero to One", "Building", "AI"].map(t => (
-              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(245,158,11,0.18)] bg-[rgba(245,158,11,0.05)] text-[rgba(252,211,77,0.65)]">
-                {t}
-              </span>
-            ))}
-          </div>
-
         </div>
-
-
-          {/* Education */}
-        <div className="group relative p-6 rounded-2xl border border-[rgba(29,158,117,0.28)] bg-[#0b1a14] hover:border-[rgba(29,158,117,0.5)] hover:bg-[#0d1f18] transition-all duration-250 overflow-hidden flex flex-col"
-        style={{ boxShadow: "0 0 40px rgba(29,158,117,0.07),0 8px 32px rgba(0,0,0,0.5)" }}>
-
-        {/* Glow */}
-        <div className="absolute -top-8 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle,rgba(29,158,117,0.18) 0%,transparent 70%)" }} />
-
-        {/* Bottom shimmer */}
-        <div className="absolute bottom-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(90deg,transparent,rgba(29,158,117,0.25),transparent)" }} />
-
-        {/* Focus badge */}
-        <div className="absolute top-3 right-3 text-[9px] tracking-[.1em] uppercase font-mono px-2 py-[2px] rounded-full border border-[rgba(29,158,117,0.28)] bg-[rgba(29,158,117,0.1)] text-[#5DCAA5]">
-          focus
-        </div>
-
-        {/* Icon */}
-        <div className="w-[38px] h-[38px] rounded-[10px] border border-[rgba(29,158,117,0.32)] bg-[rgba(29,158,117,0.12)] flex items-center justify-center mb-4 text-[17px]">
-          🎓
-        </div>
-
-        {/* Title */}
-        <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[16px] font-medium text-white">Education</h3>
-          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(29,158,117,0.3)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5]">
-            neb · grade 12
-          </span>
-        </div>
-
-        <p className="text-[14px] text-white/35 leading-relaxed mb-4">
-          Grade 12 NEB student in Nepal, aiming for engineering — focused on Robotics & AI. Disciplined self-learner building beyond the classroom.
-        </p>
-
-        {/* Education rows */}
-        <div className="flex flex-col gap-[7px] mb-4">
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(29,158,117,0.06)] hover:border-[rgba(29,158,117,0.2)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">🏫</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">NEB Grade 12</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">Science · Nepal · Currently enrolled</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
-                active
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(29,158,117,0.06)] hover:border-[rgba(29,158,117,0.2)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">🎯</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Target GPA</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">4.0 GPA · SLC Board · Nepal</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                goal
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(29,158,117,0.06)] hover:border-[rgba(29,158,117,0.2)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">🤖</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Future Path</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">Engineering → Robotics & AI</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
-                plan
-              </span>
-            </div>
-
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-[5px] mt-auto">
-            {["Robotics", "AI", "Engineering", "Self-learning", "Discipline"].map(t => (
-              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)] text-[rgba(93,202,165,0.75)]">
-                {t}
-              </span>
-            ))}
-          </div>
-
-        </div>
-
-        {/* Dreams */}
-        <div className="group relative p-6 rounded-2xl border border-white/[0.07] bg-[#0d0f14] hover:border-[rgba(127,119,221,0.2)] hover:bg-[#111420] transition-all duration-250 overflow-hidden flex flex-col">
-
-        {/* Glow */}
-        <div className="absolute -top-8 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle,rgba(127,119,221,0.15) 0%,transparent 70%)" }} />
-
-        {/* Icon */}
-        <div className="w-[38px] h-[38px] rounded-[10px] border border-[rgba(127,119,221,0.25)] bg-[rgba(83,74,183,0.09)] flex items-center justify-center mb-4 text-[17px]">
-          🚀
-        </div>
-
-        {/* Title */}
-        <div className="flex items-center gap-2 mb-[6px]">
-          <h3 className="text-[16px] font-medium text-white/85">Dreams</h3>
-          <span className="text-[10px] tracking-[.1em] uppercase font-mono px-[7px] py-[2px] rounded border border-[rgba(127,119,221,0.25)] bg-[rgba(83,74,183,0.07)] text-[#AFA9EC]">
-            unicorn gang
-          </span>
-        </div>
-
-        <p className="text-[14px] text-white/30 leading-relaxed mb-4">
-          Building Nepal's first unicorn — that's not a maybe, that's the plan. Earn while studying, explore the world, move fast.
-        </p>
-
-        {/* Dream rows */}
-          <div className="flex flex-col gap-[7px] mb-4">
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(127,119,221,0.05)] hover:border-[rgba(127,119,221,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">🦄</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Nepal's First Unicorn</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">$1B startup · Built from Kathmandu</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(127,119,221,0.22)] bg-[rgba(83,74,183,0.1)] text-[#C4B5FD] flex-shrink-0">
-                mission
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(127,119,221,0.05)] hover:border-[rgba(127,119,221,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">💸</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Earn While Studying</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">Freelance · Products · No waiting</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(245,158,11,0.22)] bg-[rgba(245,158,11,0.08)] text-[#FCD34D] flex-shrink-0">
-                now
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 px-3 py-[9px] rounded-xl bg-white/[0.025] border border-white/[0.05] hover:bg-[rgba(127,119,221,0.05)] hover:border-[rgba(127,119,221,0.18)] transition-all duration-200 cursor-default">
-              <span className="text-[15px] w-5 text-center flex-shrink-0">🌍</span>
-              <div className="flex-1 min-w-0">
-                <div className="text-[12px] font-medium text-white/72 mb-[2px]">Explore the World</div>
-                <div className="text-[10px] text-white/28 font-mono truncate">Travel fast · Experience everything</div>
-              </div>
-              <span className="text-[10px] px-[6px] py-[2px] rounded font-mono border border-[rgba(29,158,117,0.22)] bg-[rgba(29,158,117,0.08)] text-[#5DCAA5] flex-shrink-0">
-                soon
-              </span>
-            </div>
-
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-[5px] mt-auto">
-            {["Unicorn", "Nepal", "Startup", "Freedom", "Impact"].map(t => (
-              <span key={t} className="text-[13px] px-2 py-[3px] rounded font-mono border border-[rgba(127,119,221,0.2)] bg-[rgba(83,74,183,0.06)] text-[rgba(175,169,236,0.75)]">
-                {t}
-              </span>
-            ))}
-          </div>
-
-        </div>
-
-        </div>
-
-        {/* Trait pills */}
-        <div className="flex flex-wrap justify-center gap-2 mt-10 max-w-5xl mx-auto">
-          {[
-            { icon: "🦄", text: "Unicorn founder in making" },
-            { icon: "🤖", text: "Robotics & AI bound" },
-            { icon: "🌏", text: "Building from Nepal" },
-            { icon: "📖", text: "Zero to One mindset" },
-            { icon: "💸", text: "Earning while learning" },
-            { icon: "🔥", text: "Tech & Building Enthusiast" },
-          ].map(({ icon, text }) => (
-            <div key={text} className="flex items-center gap-[7px] px-[14px] py-[7px] rounded-full border border-white/[0.07] bg-white/[0.02] hover:border-white/[0.13] hover:bg-white/[0.04] transition-all duration-200 cursor-default">
-              <span className="text-[13px] leading-none">{icon}</span>
-              <span className="text-[12px] text-white/35 font-medium font-sans">{text}</span>
-            </div>
-          ))}
-        </div>
-
+        <style jsx>{`
+          @keyframes signalOrbit {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(90deg); }
+            50% { transform: rotate(180deg); }
+            75% { transform: rotate(270deg); }
+            100% { transform: rotate(360deg); }
+          }
+          @keyframes signalOrbitReverse {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-90deg); }
+            50% { transform: rotate(-180deg); }
+            75% { transform: rotate(-270deg); }
+            100% { transform: rotate(-360deg); }
+          }
+        `}</style>
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[#060609] px-4 py-20 md:py-28">
 
-        {/* 🌈 Soft ambient glow (controlled, not noisy) */}
-        <div className="absolute -top-20 -left-20 w-72 md:w-96 h-72 md:h-96 bg-blue-500/20 blur-[120px] rounded-full" />
-        <div className="absolute -bottom-20 -right-20 w-72 md:w-96 h-72 md:h-96 bg-purple-500/20 blur-[120px] rounded-full" />
+        <div className="mx-auto max-w-5xl">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.09] bg-[#0a0b0e]">
 
-        {/* subtle grid overlay */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,white_1px,transparent_1px)] bg-[size:40px_40px]" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_80%_50%,rgba(29,158,117,0.11),transparent_65%)]" />
 
-        {/* 📦 Card */}
-        <div className="relative max-w-3xl mx-auto text-center px-6 py-12 md:py-16
-                        rounded-3xl border border-white/10
-                        bg-white/[0.03] backdrop-blur-2xl
-                        shadow-[0_0_60px_rgba(0,0,0,0.4)]
-                        hover:border-white/20 transition-all duration-300">
+            <div className="relative px-6 py-12 sm:px-10 md:px-14 md:py-16">
 
-          {/* heading */}
-          <h2 className="text-2xl md:text-4xl font-semibold text-white tracking-tight">
-            Let’s build something <span className="text-blue-400">great</span>
-          </h2>
+              {/* 0 → 1 journey */}
+              <div className="mb-11 flex items-center gap-4">
 
-          {/* subtext */}
-          <p className="mt-4 text-sm md:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
-            I’m open to freelance work, collaborations, and impactful ideas.
-            If you’re building something meaningful, let’s turn it into reality.
-          </p>
+                <span className="font-mono text-base font-semibold text-white/75">
+                  0
+                </span>
 
-          {/* CTA button */}
-          <Link
-            href="/My_Works/Contacts"
-            className="mt-8 inline-flex items-center justify-center
-                      px-6 md:px-8 py-3 rounded-xl
-                      bg-gradient-to-r from-white to-gray-200
-                      text-black font-medium text-sm md:text-base
-                      transition-all duration-300
-                      hover:scale-[1.05]
-                      hover:shadow-[0_0_30px_rgba(59,130,246,0.35)]
-                      active:scale-95"
-          >
-            Get in touch
-          </Link>
+                <div className="relative h-[3px] flex-1 rounded-full bg-white/[0.08]">
 
-          {/* trust line */}
-          <p className="mt-6 text-[11px] md:text-xs text-white/40">
-            Usually replies within 24 hours ⚡
-          </p>
+                  <div className="absolute inset-y-0 left-0 w-full origin-left rounded-full bg-[#5DCAA5] animate-[drawLine_2s_ease-out_forwards]" />
 
+                  {/* moving car */}
+                  <div className="absolute top-1/2 -translate-y-1/2 animate-[driveCar_4s_ease-in-out_infinite]">
+
+                    <div className="relative">
+                      <svg
+                        width="34"
+                        height="22"
+                        viewBox="0 0 34 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="drop-shadow-[0_0_9px_rgba(93,202,165,0.75)]"
+                      >
+                        <path
+                          d="M5 14L8 7H23L29 11L32 14V17H5V14Z"
+                          fill="#5DCAA5"
+                        />
+                        <path
+                          d="M11 7L14 3H21L25 7"
+                          stroke="#8BE8C8"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M14 7H23"
+                          stroke="#060609"
+                          strokeWidth="1.5"
+                        />
+                        <circle cx="10" cy="17" r="3" fill="#060609" stroke="#5DCAA5" strokeWidth="1.5" />
+                        <circle cx="27" cy="17" r="3" fill="#060609" stroke="#5DCAA5" strokeWidth="1.5" />
+                      </svg>
+
+                      <div className="absolute left-1/2 top-full h-5 w-12 -translate-x-1/2 bg-[#5DCAA5]/20 blur-md" />
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span className="font-mono text-base font-semibold text-[#5DCAA5]">
+                  1
+                </span>
+
+              </div>
+
+
+              <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+
+                <div className="max-w-3xl">
+
+                  <p
+                    className="mb-5 text-lg font-medium tracking-tight text-[#5DCAA5] md:text-xl"
+                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  >
+                    Let's work together
+                  </p>
+
+                  <h2
+                    className="text-[44px] font-semibold leading-[1.02] tracking-[-0.045em] text-white sm:text-[58px] md:text-[72px]"
+                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  >
+                    Have something
+                    <br />
+                    <span className="text-white/38">worth building?</span>
+                  </h2>
+
+                  <p
+                    className="mt-7 max-w-xl text-[16px] leading-[1.7] text-white/50 md:text-[18px]"
+                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  >
+                    I enjoy working on products, experiments, and ideas that solve real problems. Tell me what you're thinking.
+                  </p>
+
+                </div>
+
+
+                <Link
+                  href="/My_Works/Contacts"
+                  className="group flex w-fit items-center gap-4 rounded-lg border border-white/[0.12] bg-white/[0.04] px-5 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:border-[#5DCAA5]/50 hover:bg-[#5DCAA5] hover:text-[#060609]"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  Get in touch
+
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 transition-colors duration-300 group-hover:border-black/20">
+                    <svg
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17L17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
+                  </span>
+                </Link>
+
+              </div>
+
+
+              {/* Bottom statement */}
+              <div className="mt-14 border-t border-white/[0.08] pt-7">
+
+                <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+
+                  <div>
+
+                    <p
+                      className="text-sm font-medium uppercase tracking-[0.12em] text-white/35"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      next destination
+                    </p>
+
+                    <p
+                      className="mt-2 text-2xl font-medium tracking-[-0.025em] text-white/80 sm:text-3xl md:text-4xl"
+                      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                    >
+                      Build something meaningful.
+                    </p>
+
+                  </div>
+
+                  <div className="flex items-center gap-2 font-mono text-sm text-white/40">
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-[#5DCAA5] shadow-[0_0_10px_rgba(93,202,165,0.7)]" />
+                    <span>open to ideas</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
+
+
+        <style jsx>{`
+          @keyframes drawLine {
+            from {
+              transform: scaleX(0);
+            }
+            to {
+              transform: scaleX(1);
+            }
+          }
+
+          @keyframes driveCar {
+            0% {
+              left: 0%;
+              transform: translateX(-5px) translateY(-50%);
+            }
+
+            10% {
+              left: 8%;
+            }
+
+            45% {
+              left: 48%;
+            }
+
+            75% {
+              left: 82%;
+            }
+
+            92% {
+              left: 100%;
+              transform: translateX(-28px) translateY(-50%);
+            }
+
+            100% {
+              left: 100%;
+              transform: translateX(-28px) translateY(-50%);
+            }
+          }
+        `}</style>
+
       </section>
 
     </div>
