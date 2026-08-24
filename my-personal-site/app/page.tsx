@@ -2,52 +2,71 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import OrbitWidget from "./orbit";
+import { SiPython, SiTypescript, SiC, SiRust, SiGnubash, SiReact, SiNextdotjs, SiTailwindcss, SiDjango, SiFastapi, SiNodedotjs, SiPydantic, SiPytorch, SiScikitlearn, SiLangchain, SiNumpy, SiPandas, SiPostgresql, SiMysql, SiMongodb, SiRedis, SiLinux, SiGit, SiDocker, SiVercel,
+  SiFigma } from "react-icons/si";
 import { FaGithub, FaXTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa6";
 
 const groups = [
   {
-    label: "backend / ai",
+    label: "languages",
     chips: [
-      { l: "Python", color: "blue" },
-      { l: "Django", color: "teal" },
-      { l: "FastAPI", color: "orange" },
-      { l: "Pydantic", color: "mint" },
-      { l: "LangChain", color: "purple" },
-      { l: "Scikit Learn", color: "blue" },
-      { l: "PyTorch", color: "orange" },
-      { l: "Numpy", color: "blue" },
-      { l: "Pandas", color: "teal" },
+      { l: "Python", color: "blue", icon: SiPython },
+      { l: "TypeScript", color: "yellow", icon: SiTypescript },
+      { l: "C", color: "mint", icon: SiC },
+      { l: "Rust", color: "purple", icon: SiRust },
+      { l: "Bash", color: "green", icon: SiGnubash },
     ],
   },
+
   {
     label: "frontend",
     chips: [
-      { l: "Next.js", color: "white" },
-      { l: "React", color: "blue" },
-      { l: "TypeScript", color: "yellow" },
-      { l: "Tailwind CSS", color: "teal" },
-      { l: "Node.js", color: "green" },
+      { l: "React", color: "blue", icon: SiReact },
+      { l: "Next.js", color: "white", icon: SiNextdotjs },
+      { l: "Tailwind CSS", color: "teal", icon: SiTailwindcss },
     ],
   },
+
   {
-    label: "tools",
+    label: "backend",
     chips: [
-      { l: "Linux", color: "mint" },
-      { l: "Git", color: "purple" },
-      { l: "MySQL", color: "orange" },
-      { l: "MongoDB", color: "green" },
-      { l: "Vercel", color: "white" },
-      { l: "Figma", color: "teal" },
-      { l: "Render", color: "yellow" },
+      { l: "Django", color: "teal", icon: SiDjango },
+      { l: "Django REST Framework", color: "orange", icon: SiDjango },
+      { l: "FastAPI", color: "orange", icon: SiFastapi },
+      { l: "Node.js", color: "green", icon: SiNodedotjs },
+      { l: "Pydantic", color: "mint", icon: SiPydantic },
     ],
   },
+
   {
-    label: "systems & scripting",
+    label: "ai / ml",
     chips: [
-      { l: "C", color: "mint" },
-      { l: "Rust", color: "purple" },
-      { l: "Bash", color: "green" },
-      
+      { l: "PyTorch", color: "orange", icon: SiPytorch },
+      { l: "Scikit-learn", color: "blue", icon: SiScikitlearn },
+      { l: "LangChain", color: "purple", icon: SiLangchain },
+      { l: "NumPy", color: "blue", icon: SiNumpy },
+      { l: "Pandas", color: "teal", icon: SiPandas },
+    ],
+  },
+
+  {
+    label: "databases",
+    chips: [
+      { l: "PostgreSQL", color: "blue", icon: SiPostgresql },
+      { l: "MySQL", color: "orange", icon: SiMysql },
+      { l: "MongoDB", color: "green", icon: SiMongodb },
+      { l: "Redis", color: "teal", icon: SiRedis },
+    ],
+  },
+
+  {
+    label: "devops / tools",
+    chips: [
+      { l: "Linux", color: "mint", icon: SiLinux },
+      { l: "Git", color: "purple", icon: SiGit },
+      { l: "Docker", color: "blue", icon: SiDocker },
+      { l: "Vercel", color: "white", icon: SiVercel },
+      { l: "Figma", color: "teal", icon: SiFigma },
     ],
   },
 ];
@@ -75,147 +94,283 @@ export default function HeroSection() {
     
       {/* ── Top bar ── */}
       <div className="flex items-center justify-between px-5 py-[11px] border-b border-white/[0.06]">
-        <div className="flex gap-[6px]">
-          <span className="w-[10px] h-[10px] rounded-full bg-[#FF5F57] block" />
-          <span className="w-[10px] h-[10px] rounded-full bg-[#FFBD2E] block" />
-          <span className="w-[10px] h-[10px] rounded-full bg-[#28C840] block" />
+  {/* Window controls */}
+  <div className="flex gap-[6px]">
+    <span className="w-[10px] h-[10px] rounded-full bg-[#FF5F57] block" />
+    <span className="w-[10px] h-[10px] rounded-full bg-[#FFBD2E] block" />
+    <span className="w-[10px] h-[10px] rounded-full bg-[#28C840] block" />
+  </div>
+
+  {/* Address */}
+  <span className="text-[12px] sm:text-[13px] text-white/[0.45] tracking-[.07em]">
+    portfolio.adhrit.dev
+  </span>
+
+  {/* Status */}
+  <div className="flex items-center gap-[5px] text-[11px] sm:text-[12px] text-[#5DCAA5] tracking-[.06em]">
+    <span className="w-[6px] h-[6px] rounded-full bg-[#5DCAA5] shadow-[0_0_8px_rgba(93,202,165,0.55)] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
+    live
+  </div>
+</div>
+
+{/* Main grid */}
+<div className="grid grid-cols-1 sm:grid-cols-[1fr_200px]">
+
+  {/* LEFT */}
+  <div className="px-6 sm:px-9 pt-6 pb-8 flex flex-col justify-between gap-8 border-b sm:border-b-0 sm:border-r border-white/[0.05]">
+
+    <div>
+
+      {/* Banner */}
+      <div className="relative w-full h-32 sm:h-40 rounded-xl overflow-hidden mb-4 border border-white/[0.06]">
+        <img
+          src="https://ik.imagekit.io/8pckwj2wc/luffy_long.jpg"
+          alt="Profile banner"
+          className="w-full h-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-[#060609]/90" />
+
+        {/* subtle bottom glow */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#060609]/40 to-transparent" />
+      </div>
+
+      {/* Profile + Tags */}
+      <div className="flex items-end gap-3 -mt-10 mb-6 relative z-10">
+
+        {/* Profile */}
+        <div className="relative">
+          <img
+            src="https://ik.imagekit.io/8pckwj2wc/luffy2pic.jpg"
+            alt="Adhrit Sigdel"
+            className="
+              w-20 h-20 sm:w-24 sm:h-24
+              rounded-xl
+              border-[3px] border-[#060609]
+              object-cover
+              shadow-[0_8px_30px_rgba(0,0,0,0.65)]
+            "
+          />
+
+          {/* Online indicator */}
+          <span
+            className="
+              absolute
+              right-[-2px]
+              bottom-[-2px]
+              w-[11px]
+              h-[11px]
+              rounded-full
+              bg-[#5DCAA5]
+              border-[2px]
+              border-[#060609]
+              shadow-[0_0_9px_rgba(93,202,165,0.5)]
+            "
+          />
         </div>
-        <span className="text-[13px] text-white/60 tracking-[.08em]">portfolio.adhrit.dev</span>
-        <div className="flex items-center gap-[5px] text-[13px] text-[#1D9E75] tracking-[.06em]">
-          <span className="w-[7px] h-[7px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
-          livee
+
+        {/* Tags */}
+        <div
+          className="flex flex-wrap items-center gap-2 pb-[2px]"
+          style={{
+            animation: mounted ? "fadeUp .4s ease both" : "none",
+          }}
+        >
+          <span
+            className="
+              text-[10px]
+              tracking-[.12em]
+              text-white/[0.38]
+              uppercase
+              px-[8px]
+              py-[4px]
+              border
+              border-white/[0.09]
+              bg-white/[0.02]
+              rounded-[5px]
+            "
+          >
+            v2.0
+          </span>
+
+          <span
+            className="
+              flex items-center gap-[5px]
+              text-[10px]
+              text-[#5DCAA5]
+              tracking-[.07em]
+              px-[8px]
+              py-[4px]
+              border
+              border-[#5DCAA5]/20
+              rounded-[5px]
+              bg-[#5DCAA5]/[0.06]
+            "
+          >
+            <span className="w-[5px] h-[5px] rounded-full bg-[#5DCAA5] shadow-[0_0_7px_rgba(93,202,165,0.6)] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
+            open to work
+          </span>
         </div>
       </div>
 
-      {/* ── Main grid ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-[1fr_200px]">
+      {/* Identity */}
+      <div>
 
-        {/* LEFT */}
-        <div className="px-6 sm:px-9 pt-6 pb-8 flex flex-col justify-between gap-8 border-b sm:border-b-0 sm:border-r border-white/[0.05]">
+        <p className="text-[11px] tracking-[.18em] text-[#5DCAA5]/55 uppercase mb-[9px]">
+          // developer
+        </p>
 
-          <div>
+        <h1
+          className="
+            text-[42px] sm:text-[56px]
+            font-semibold
+            leading-[0.94]
+            tracking-[-0.05em]
+            text-[#f5f5f7]
+            mb-[15px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif",
+          }}
+        >
+          Adhrit
+          <br />
 
-            {/*  Banner */}
-            <div className="relative w-full h-32 sm:h-40 rounded-xl overflow-hidden mb-4">
-              <img
-                src="https://ik.imagekit.io/8pckwj2wc/luffy_long.jpg"
-                alt="banner"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/80" />
-            </div>
+          <span className="text-white/[0.32]">
+            Sigdel
+          </span>
 
-            {/*  Profile + Tag Row */}
-            <div className="flex items-center gap-3 -mt-6 mb-5">
+          <span
+            className="
+              inline-block
+              w-[2px]
+              h-[36px]
+              sm:h-[46px]
+              bg-[#5DCAA5]
+              ml-[7px]
+              align-middle
+              shadow-[0_0_12px_rgba(93,202,165,0.35)]
+              animate-[blink_.9s_step-end_infinite]
+            "
+          />
+        </h1>
 
-              {/* Profile */}
-              <img
-                src="https://ik.imagekit.io/8pckwj2wc/luffy2pic.jpg"
-                alt="profile"
-                className="
-                  w-20 h-20 sm:w-24 sm:h-24 
-                  rounded-xl 
-                  border-4 border-[#060609] 
-                  object-cover 
-                  shadow-[0_0_30px_rgba(0,0,0,0.8)]
-                "
-              />
+        {/* Role */}
+        <div className="flex items-center gap-[9px] mb-[18px]">
 
-              {/* Tags */}
-              <div
-                className="flex flex-wrap gap-2 pt-13"
-                style={{ animation: mounted ? "fadeUp .4s ease both" : "none" }}
-              >
-                <span className="text-[11px] tracking-[.12em] text-white/25 uppercase px-[8px] py-[4px] border border-white/[0.09] rounded-[5px]">
-                  v2.0
-                </span>
+          <span
+            className="
+              inline-flex items-center gap-[7px]
+              px-[9px] py-[5px]
+              rounded-[6px]
+              border
+              border-[#5DCAA5]/20
+              bg-[#5DCAA5]/[0.06]
+              text-[10px]
+              sm:text-[11px]
+              font-medium
+              tracking-[.08em]
+              text-[#5DCAA5]/80
+              uppercase
+            "
+          >
+            <span className="w-[5px] h-[5px] rounded-full bg-[#5DCAA5] shadow-[0_0_7px_rgba(93,202,165,0.7)]" />
+            Full-stack & AI
+          </span>
 
-                <span className="flex items-center gap-[5px] text-[10px] text-[#5DCAA5] tracking-[.07em] px-[8px] py-[4px] border border-[rgba(29,158,117,0.28)] rounded-[5px] bg-[rgba(29,158,117,0.07)]">
-                  <span className="w-[6px] h-[6px] rounded-full bg-[#1D9E75] animate-[pulseGreen_1.4s_ease-in-out_infinite]" />
-                  open to work
-                </span>
-              </div>
-            </div>
+          <span className="text-[10px] text-white/[0.18]">
+            •
+          </span>
 
-            {/*  Name */}
-            <p className="text-[12px] tracking-[.18em] text-white/[0.25] uppercase mb-[6px]">
-              // developer
-            </p>
+          <span className="text-[10px] tracking-[.08em] text-white/[0.30] uppercase">
+            Builder
+          </span>
 
-            <h1
-              className="
-                text-[40px] sm:text-[52px] 
-                font-semibold 
-                leading-[0.95] 
-                tracking-[-0.045em] 
-                text-[#f5f5f7] 
-                mb-[6px]
-              "
-              style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
-            >
-              Adhrit
-              <br />
-              <span className="text-white/20">Sigdel</span>
-              <span className="inline-block w-[3px] h-[36px] sm:h-[42px] bg-[#5DCAA5] ml-[4px] align-middle animate-[blink_.9s_step-end_infinite]" />
-            </h1>
-
-            {/*  Role */}
-            <div className="flex items-center gap-[10px] my-4">
-              <div className="flex-1 h-px bg-white/[0.06]" />
-              <span className="text-[13px] tracking-[.12em] text-white/40 uppercase whitespace-nowrap">
-                Full-stack & AI
-              </span>
-              <div className="flex-1 h-px bg-white/[0.06]" />
-            </div>
-
-            {/*  Bio */}
-            <p
-              className="text-[15px] text-white/50 leading-[1.75] max-w-[360px] mb-6"
-              style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
-            >
-              Building{" "}
-              <span className="text-white/80 font-medium">modern web apps</span> and{" "}
-              <span className="text-white/80 font-medium">AI-powered systems</span> — 
-              clean Next.js frontends, Python backends with LangChain, Django & PyTorch.
-            </p>
-          </div>
-
-          {/*  Buttons */}
-          <div className="flex gap-2 flex-wrap">
-            <Link
-              href="/My_Works/Project1"
-              className="
-                inline-flex items-center gap-[6px] 
-                text-[12px] font-medium 
-                text-[#070709] bg-[#ececee] 
-                px-[18px] py-[9px] 
-                rounded-[8px] 
-                transition-all duration-300 
-                hover:opacity-80 hover:scale-[1.02]
-              "
-              style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
-            >
-              View projects ↗
-            </Link>
-
-            <Link
-              href="/My_Works/about"
-              className="
-                inline-flex items-center 
-                text-[13px] text-white/45 
-                px-[18px] py-[9px] 
-                rounded-[8px] 
-                border border-white/10 
-                transition-all duration-300 
-                hover:text-white/70 hover:border-white/20
-              "
-              style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
-            >
-              About me
-            </Link>
-          </div>
         </div>
 
+        {/* Bio */}
+        <p
+          className="
+            text-[15px]
+            text-white/[0.58]
+            leading-[1.75]
+            max-w-[390px]
+            mb-[25px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif",
+          }}
+        >
+          Building{" "}
+          <span className="text-white/[0.88] font-medium">
+            modern web applications
+          </span>{" "}
+          and{" "}
+          <span className="text-white/[0.88] font-medium">
+            AI-powered systems
+          </span>{" "}
+          with Next.js, Python, Django, and PyTorch.
+        </p>
+
+      </div>
+    </div>
+
+    {/* Buttons */}
+    <div className="flex gap-[8px] flex-wrap">
+
+      <Link
+        href="/My_Works/Project1"
+        className="
+          group
+          inline-flex items-center gap-[7px]
+          text-[12px]
+          font-medium
+          text-[#08090a]
+          bg-[#e8e8ea]
+          px-[17px] py-[9px]
+          rounded-[7px]
+          transition-all duration-300
+          hover:bg-white
+          hover:-translate-y-[1px]
+          shadow-[0_4px_18px_rgba(255,255,255,0.06)]
+        "
+        style={{
+          fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif",
+        }}
+      >
+        View projects
+
+        <span className="transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[1px]">
+          ↗
+        </span>
+      </Link>
+
+      <Link
+        href="/My_Works/about"
+        className="
+          inline-flex items-center
+          text-[12px]
+          font-medium
+          text-white/[0.52]
+          px-[17px] py-[9px]
+          rounded-[7px]
+          border border-white/[0.10]
+          bg-white/[0.025]
+          transition-all duration-300
+          hover:text-white/[0.85]
+          hover:bg-white/[0.05]
+          hover:border-white/[0.17]
+          hover:-translate-y-[1px]
+        "
+        style={{
+          fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif",
+        }}
+      >
+        About me
+      </Link>
+
+    </div>
+  </div>
         {/* RIGHT */}
         <div className="px-4 py-6 flex flex-col gap-3 bg-[#070709]">
           {/* Stats grid */}
@@ -317,35 +472,29 @@ export default function HeroSection() {
         {/* Groups */}
         <div className="flex flex-col gap-[14px]">
           {groups.map((g) => (
-            <div key={g.label} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-[10px]">
+            <div
+              key={g.label}
+              className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-[10px]"
+            >
               <span className="text-[12px] tracking-[.1em] text-white/30 uppercase sm:min-w-[72px] sm:text-right">
                 {g.label}
               </span>
+
               <div className="flex flex-wrap gap-[6px]">
-                {g.chips.map(({ l, color }) => (
+                {g.chips.map(({ l, color, icon: Icon }) => (
                   <div
                     key={l}
                     className={`
-                      inline-flex items-center gap-[5px] px-[10px] py-[5px] rounded-[6px] border
+                      inline-flex items-center gap-[6px] px-[10px] py-[5px] rounded-[6px] border
                       text-[13px] font-medium tracking-[-0.01em] cursor-default
                       transition-transform duration-150 hover:-translate-y-[2px]
-                      relative before:content-[''] before:w-[5px] before:h-[5px] before:rounded-full before:flex-shrink-0
                       ${chipStyles[color]}
                     `}
-                    style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif",
+                    }}
                   >
-                    <span
-                      className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${
-                        color === "blue"   ? "bg-[#85B7EB]" :
-                        color === "teal"   ? "bg-[#5DCAA5]" :
-                        color === "mint"   ? "bg-[#9FE1CB]" :
-                        color === "purple" ? "bg-[#AFA9EC]" :
-                        color === "orange" ? "bg-[#F0997B]" :
-                        color === "yellow" ? "bg-[#E8D22A]" :
-                        color === "green"  ? "bg-[#86C940]" :
-                        "bg-white/35"
-                      }`}
-                    />
+                    <Icon className="w-[14px] h-[14px] flex-shrink-0" />
                     {l}
                   </div>
                 ))}
@@ -392,26 +541,26 @@ export default function HeroSection() {
     </div>
 
     {/* RIGHT — Availability */}
-    <div className="flex items-center sm:flex-col sm:items-end gap-3 sm:gap-1">
+    <div className="flex items-center sm:flex-col sm:items-end gap-2 sm:gap-[5px]">
 
-      <div className="flex items-center gap-2">
+  <div className="flex items-center gap-[7px]">
 
-        <span className="relative flex h-[7px] w-[7px]">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40" />
-          <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-500" />
-        </span>
+    <span className="relative flex h-[7px] w-[7px]">
+      <span className="absolute inline-flex h-full w-full rounded-full bg-[#5DCAA5] opacity-35 animate-ping" />
+      <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-[#5DCAA5] shadow-[0_0_8px_rgba(93,202,165,0.55)]" />
+    </span>
 
-        <span className="text-[14px] text-emerald-300 uppercase tracking-wider font-mono">
-          available
-        </span>
+    <span className="text-[12px] text-[#5DCAA5] uppercase tracking-[.12em] font-medium">
+      Available
+    </span>
 
-      </div>
+  </div>
 
-      <span className="text-[14px] text-white/40 font-mono">
-        open for remote work
-      </span>
+  <span className="text-[12px] text-white/55 tracking-[.02em]">
+    Remote · Freelance · Projects
+  </span>
 
-    </div>
+</div>
 
   </div>
 </div>
