@@ -6,10 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import resend
 #import smtplib from email.mime.text import MIMEText from fastapi import Request
 
-# Env for email
+# Env for email     
 from dotenv import load_dotenv
 import os
-load_dotenv()
+load_dotenv() 
 
 # For Rate Limiting
 from slowapi import Limiter, _rate_limit_exceeded_handler
