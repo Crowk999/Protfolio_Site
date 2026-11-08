@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import OrbitWidget from "./orbit";
 import { SiPython, SiTypescript, SiC, SiRust, SiGnubash, SiReact, SiNextdotjs, SiTailwindcss, SiDjango, SiFastapi, SiNodedotjs, SiPydantic, SiPytorch, SiScikitlearn, SiLangchain, SiNumpy, SiPandas, SiPostgresql, SiMysql, SiMongodb, SiRedis, SiLinux, SiGit, SiDocker, SiVercel,
-  SiFigma } from "react-icons/si";
+  SiFigma, SiAssemblyscript, SiLua, SiZsh, SiJavascript } from "react-icons/si";
 import { FaGithub, FaXTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa6";
 
 const groups = [
@@ -15,6 +15,10 @@ const groups = [
       { l: "C", color: "mint", icon: SiC },
       { l: "Rust", color: "purple", icon: SiRust },
       { l: "Bash", color: "green", icon: SiGnubash },
+      { l: "AssemblyScript", color: "orange", icon: SiAssemblyscript },
+      { l: "Lua", color: "blue", icon: SiLua },
+      { l: "Zsh", color: "teal", icon: SiZsh },
+      { l: "JavaScript", color: "yellow", icon: SiJavascript },
     ],
   },
 
@@ -371,14 +375,14 @@ export default function HeroSection() {
 
     </div>
   </div>
-        {/* RIGHT */}
+      {/*------------------------ RIGHT ----------------------------------*/}
         <div className="px-4 py-6 flex flex-col gap-3 bg-[#070709]">
           {/* Stats grid */}
           <div className="grid grid-cols-2 gap-[7px]">
             {[
               { val: "10+", lbl: "projects" },
               { val: "1+",  lbl: "years" },
-              { val: "5",   lbl: "frameworks" },
+              { val: "10",   lbl: "languages" },
               { val: "∞",   lbl: "coffee" },
               { val: "17",  lbl: "Age" },
               { val: "∞",  lbl: "imagination" },

@@ -174,7 +174,7 @@ export default function Home() {
             }}
           >
             {[...Array(3)].flatMap((_, outer) =>
-              ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js"].map((t, i) => (
+              ["JavaScript","TypeScript","Rust","Python","Assembly","C","MySQL","Lua","Bash","Zsh"].map((t, i) => (
                 <span
                   key={`${t}-${outer}-${i}`}
                   className="inline-flex items-center gap-2 whitespace-nowrap text-[12px] font-medium px-4 py-[6px] rounded-full border border-[rgba(55,138,221,0.25)] bg-[rgba(55,138,221,0.07)] text-[#85B7EB] cursor-default select-none flex-shrink-0"
@@ -198,7 +198,7 @@ export default function Home() {
             }}
           >
             {[...Array(3)].flatMap((_, outer) =>
-              ["Python", "Django", "FastAPI", "LangChain", "PyTorch", "Scikit Learn", "MongoDB", "MySQL"].map((t, i) => (
+              ["Next.js", "React", "Tailwind CSS", "Node.js", "Django", "FastAPI", "LangChain", "PyTorch", "Scikit Learn", "MongoDB",].map((t, i) => (
                 <span
                   key={`${t}-${outer}-${i}`}
                   className="inline-flex items-center gap-2 whitespace-nowrap text-[12px] font-medium px-4 py-[6px] rounded-full border border-[rgba(29,158,117,0.28)] bg-[rgba(29,158,117,0.07)] text-[#5DCAA5] cursor-default select-none flex-shrink-0"
@@ -285,7 +285,7 @@ export default function Home() {
         </div>
         <p className="text-[14px] text-white/30 leading-relaxed mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          Crafting pixel-perfect, responsive interfaces with React, Next.js, and Tailwind CSS — fast by default, beautiful by design.
+          Crafting user interactive pixel-perfect, responsive interfaces with React, Next.js, and Tailwind CSS tools with JavaScript & TypeScript languages — fast by default, beautiful by design and AI powered.
         </p>
         <div className="flex flex-wrap gap-[6px]">
           {["React", "Next.js", "TypeScript", "Tailwind"].map(t => (
@@ -321,10 +321,10 @@ export default function Home() {
         </div>
         <p className="text-[14px] text-white/35 leading-relaxed mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          Building robust APIs and AI-powered systems with Django, FastAPI, LangChain & PyTorch — from REST endpoints to LLM pipelines.
+          Building robust APIs and AI-powered systems with Django, FastAPI, LangChain & PyTorch frameworks to Rust, Bash, Lua & C Powered languages — from REST endpoints to LLM pipelines.
         </p>
         <div className="flex flex-wrap gap-[6px]">
-          {["Django", "FastAPI", "LangChain", "PyTorch"].map(t => (
+          {["Django", "FastAPI", "LangChain", "PyTorch","Assembly","Rust","Bash"].map(t => (
             <span key={t} className="text-[13px] text-[#5DCAA5]/70 px-2 py-[3px] rounded-md border border-[rgba(29,158,117,0.2)] bg-[rgba(29,158,117,0.06)]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t}</span>
           ))}
@@ -562,7 +562,7 @@ export default function Home() {
                 {/* Interests */}
                 <div className="group border-b border-white/[0.07] px-6 py-7 transition hover:bg-white/[0.025] sm:border-b-0 sm:border-r">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-white/25">exploring</span>
-                  <p className="mt-3 text-base text-white/80 transition group-hover:text-[#A78BFA]">AI · Robotics</p>
+                  <p className="mt-3 text-base text-white/80 transition group-hover:text-[#A78BFA]">AI · System</p>
                   <p className="mt-1 text-sm text-white/35">Systems & hardware</p>
                 </div>
                 {/* Outside code */}
