@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+
+  <title>You're Offline | Adhrit</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #101010;
+      color: #ededed;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    .offline-page {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .brand {
+      margin-bottom: 65px;
+      color: #ededed;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    .brand span {
+      color: #777;
+      font-weight: 400;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 11px;
+      margin-bottom: 27px;
+      border: 1px solid #303030;
+      border-radius: 5px;
+      color: #a3a3a3;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #d97757;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-size: clamp(32px, 7vw, 43px);
+      line-height: 1.15;
+      letter-spacing: -1.8px;
+      font-weight: 650;
+    }
+
+    .description {
+      color: #929292;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 400px;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 32px 0 23px;
+      background: #292929;
+    }
+
+    .help-text {
+      color: #777;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    button {
+      padding: 12px 19px;
+      border: 1px solid #e5e5e5;
+      border-radius: 5px;
+      background: #e5e5e5;
+      color: #111;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    button:hover {
+      background: #fff;
+      border-color: #fff;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    .footer {
+      margin-top: 75px;
+      color: #555;
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .brand {
+        margin-bottom: 55px;
+      }
+
+      .footer {
+        margin-top: 60px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="offline-page">
+
+    <div class="brand">
+      Adhrit <span>/ Portfolio</span>
+    </div>
+
+    <div class="status" id="status">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">No internet connection</span>
+    </div>
+
+    <h1>You're offline.</h1>
+
+    <p class="description">
+      It looks like your device isn't connected to the internet.
+      An active internet connection is required to access this
+      portfolio. Please check your network and try again.
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="help-text">
+      Check your Wi-Fi or mobile data connection. Once you're
+      back online, you can return to the portfolio.
+    </p>
+
+    <div class="actions">
+      <button id="retryButton" onclick="retryConnection()">
+        Try again
+      </button>
+    </div>
+
+    <div class="footer">
+      &copy; <span id="year"></span> Adhrit
+    </div>
+
+  </main>
+
+  <script>
+    const retryButton = document.getElementById("retryButton");
+    const statusText = document.getElementById("statusText");
+    const statusDot = document.getElementById("statusDot");
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    function updateConnectionStatus() {
+      if (navigator.onLine) {
+        statusText.textContent = "Connection restored";
+        statusDot.style.background = "#65b98a";
+      } else {
+        statusText.textContent = "No internet connection";
+        statusDot.style.background = "#d97757";
+      }
+    }
+
+    async function retryConnection() {
+      retryButton.disabled = true;
+      retryButton.textContent = "Checking...";
+
+      updateConnectionStatus();
+
+      if (navigator.onLine) {
+        window.location.reload();
+        return;
+      }
+
+      setTimeout(() => {
+        retryButton.disabled = false;
+        retryButton.textContent = "Try again";
+        updateConnectionStatus();
+      }, 1000);
+    }
+
+    window.addEventListener("online", () => {
+      updateConnectionStatus();
+      window.location.reload();
+    });
+
+    window.addEventListener("offline", updateConnectionStatus);
+
+    updateConnectionStatus();
+  </script>
+</body>
+</html>
+

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import InstallPWA from "./InstallPWA";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -111,7 +112,7 @@ useEffect(() => {
                 </Link>
               ))}
             </nav>
-
+              <InstallPWA />
             {/* ── Desktop CTA ── */}
             <div className="hidden md:flex items-center gap-3">
               <a
@@ -125,6 +126,7 @@ useEffect(() => {
                 </svg>
                 Email
               </a>
+
               <a
                 href="https://x.com/SigdelAdhrit"
                 target="_blank"
@@ -270,7 +272,7 @@ useEffect(() => {
               </span>
             </div>
           </div>
-
+          <InstallPWA />
           {/* CTA */}
           <a
             href="https://x.com/SigdelAdhrit"
