@@ -1,12 +1,17 @@
 
-const CACHE_NAME = "adhrit-portfolio-v1";
+const CACHE_NAME = "adhrit-portfolio-v2";
 
 const OFFLINE_URL = "/offline.html";
+
+const OFFLINE_FILES = [
+  "/offline.html",
+  "/dragon_game.html"
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.add(OFFLINE_URL);
+      return cache.addAll(OFFLINE_FILES);
     })
   );
 
@@ -41,9 +46,11 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request).catch(async () => {
         return (
+          await caches.match(request) ||
           await caches.match(OFFLINE_URL)
         ) || Response.error();
       })
     );
   }
 });
+

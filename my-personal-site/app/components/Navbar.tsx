@@ -39,6 +39,7 @@ useEffect(() => {
     { href: "/My_Works/about",     label: "About" },
     { href: "/My_Works/Project1",  label: "Projects" },
     { href: "/My_Works/Contacts",  label: "Contact" },
+    { href: "/dragon_game.html",  label: "Game" },
   ];
 
   const isActive = (href:string) =>

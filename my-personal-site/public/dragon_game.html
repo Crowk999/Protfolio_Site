@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ember Run · Dragon Dash</title>
+<style>
+  :root{
+    --ink:#f3e7d6; --muted:#9f8c7f; --line:rgba(243,185,100,.2);
+    --ember:#ea7a42; --gold:#f3b964;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    min-height:100vh;min-height:100dvh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    padding:14px;color:var(--ink);overflow:hidden;
+    user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:
+      radial-gradient(90% 60% at 50% 115%, rgba(234,122,66,.16), transparent 70%),
+      linear-gradient(180deg,#1f1816,#120e0d);
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  header{width:min(960px,100%);display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+  .brand{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-size:clamp(20px,4vw,26px)}
+  .brand em{color:var(--ember)}
+  .stats{display:flex;gap:clamp(12px,3vw,26px);font-variant-numeric:tabular-nums;text-align:right}
+  .stat span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .stat strong{font-size:clamp(16px,3.4vw,20px);font-weight:600}
+  #lives{color:var(--ember);letter-spacing:.12em}
+
+  .stage{
+    position:relative;width:min(960px,100%);aspect-ratio:800/360;
+    border-radius:20px;overflow:hidden;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 0 1px rgba(243,185,100,.12);
+  }
+  @media (max-width:640px){.stage{aspect-ratio:4/3}}
+  #game{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+  #banner{
+    position:absolute;left:50%;top:12%;transform:translate(-50%,-6px);
+    opacity:0;transition:opacity .35s,transform .35s;pointer-events:none;text-align:center;
+  }
+  #banner.show{opacity:1;transform:translate(-50%,0)}
+  #banner b{display:block;font-family:Georgia,serif;font-weight:400;font-size:clamp(22px,5vw,36px);color:var(--gold);text-shadow:0 0 18px rgba(255,160,70,.6)}
+  #banner span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+
+  .overlay{
+    position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;
+    background:radial-gradient(70% 70% at 50% 50%,rgba(14,9,8,.55),rgba(10,6,6,.85));
+    transition:opacity .3s;
+  }
+  .overlay.hidden{opacity:0;pointer-events:none}
+  .overlay h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,7vw,52px);line-height:1;margin-bottom:12px}
+  .overlay h2 em{color:var(--ember)}
+  .overlay p{color:var(--muted);font-size:clamp(13px,3.4vw,15px);line-height:1.7;max-width:42ch;margin:0 auto 20px}
+  .overlay p b{color:var(--ink);font-weight:600}
+  .new{color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+
+  .btn{
+    font:inherit;font-size:13px;letter-spacing:.04em;padding:11px 26px;border-radius:999px;
+    border:1px solid var(--ember);background:var(--ember);color:#1a100c;font-weight:600;cursor:pointer;
+    transition:transform .2s,background .2s;
+  }
+  .btn:hover{background:#f08a55}
+  .btn:active{transform:scale(.97)}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  .controls{display:none;gap:12px;width:min(960px,100%);justify-content:space-between}
+  @media (pointer:coarse){.controls{display:flex}}
+  .pad{
+    flex:1;max-width:260px;height:58px;border-radius:16px;border:1px solid var(--line);
+    background:rgba(255,220,170,.05);color:var(--ink);font:inherit;font-size:14px;
+    letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  }
+  .pad.primary{background:var(--ember);border-color:var(--ember);color:#1a100c;font-weight:700}
+  .pad:active{transform:scale(.97)}
+
+  footer{width:min(960px,100%);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:center;font-size:12px;color:var(--muted)}
+  footer a{color:var(--gold);text-decoration:none}
+  .chip{font:inherit;font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+  .chip:hover{border-color:var(--gold)}
+  .keys{color:#6f5f56}
+  @media (pointer:coarse){.keys{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Ember <em>Run</em></div>
+  <div class="stats">
+    <div class="stat"><span>Score</span><strong id="score">0</strong></div>
+    <div class="stat"><span>Best</span><strong id="best">0</strong></div>
+    <div class="stat"><span>Level</span><strong id="level">1</strong></div>
+    <div class="stat"><span>Lives</span><strong id="lives">♥♥♥</strong></div>
+  </div>
+</header>
+
+<div class="stage" id="stage">
+  <canvas id="game" aria-label="Dragon running game"></canvas>
+  <div id="banner"><b id="bnTitle"></b><span id="bnSub"></span></div>
+  <div class="overlay" id="overlay">
+    <div>
+      <h2 id="ovTitle"></h2>
+      <p id="ovText"></p>
+      <button class="btn" id="ovBtn" type="button"></button>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="pad" id="duckBtn" type="button">Duck</button>
+  <button class="pad primary" id="jumpBtn" type="button">Jump</button>
+</div>
+
+<footer>
+  <a href="/">← Home</a>
+  <button class="chip" id="soundBtn" type="button">Sound on</button>
+  <button class="chip" id="pauseBtn" type="button">Pause</button>
+  <span class="keys">Space / ↑ jump · ↓ duck · P pause · M sound</span>
+</footer>
+
+<script>
+(() => {
+  const GW = 800, GH = 360, GROUND = 300, KEY = 'emberRunBest';
+  const LVL_MSG = ['', 'The air grows hot', 'Wings in the dusk', 'Spires rise from the ash',
+                   'Twin ambushes', 'The ground splits open', 'Inferno mode'];
+  const $ = id => document.getElementById(id);
+
+  const stage = $('stage'), cv = $('game'), ctx = cv.getContext('2d');
+  let W = 800, H = 360, dpr = 1, scale = 1, offX = 0, offY = 0;
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = stage.clientWidth; H = stage.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    scale = Math.min(W / GW, H / GH);
+    offX = (W - GW * scale) / 2;
+    offY = H - GH * scale;
+  }
+  addEventListener('resize', resize);
+
+  let high = 0;
+  try { high = +localStorage.getItem(KEY) || 0; } catch (e) {}
+
+  const S = {
+    state: 'ready', dist: 0, score: 0, bonus: 0, lives: 3, level: 1,
+    speed: 6, invul: 0, shake: 0, t: 0, spawnIn: 260,
+    startBest: 0, overAt: 0, lastScore: 0
+  };
+  const dragon = { x: 130, bottom: GROUND, vy: 0, onGround: true, ducking: false };
+  let duckHeld = false, muted = false;
+  let obstacles = [], gems = [], particles = [];
+
+  const cracks = Array.from({ length: 24 }, () => ({
+    x: Math.random() * 600, y: 6 + Math.random() * 30,
+    len: 10 + Math.random() * 26, j: Math.random() * 12 - 2
+  }));
+  const ridgeFar = makeRidge(16, 50, 120);
+  const ridgeMid = makeRidge(10, 24, 70);
+  const embers = Array.from({ length: 44 }, () => newEmber(true));
+
+  function makeRidge(n, lo, hi){
+    const p = [];
+    for (let i = 0; i < n; i++) p.push(lo + Math.random() * (hi - lo));
+    p.push(p[0]);
+    return p;
+  }
+  function newEmber(init){
+    return {
+      x: Math.random() * GW, y: init ? Math.random() * GROUND : GROUND + 10,
+      v: .2 + Math.random() * .5, p: Math.random() * 6.28, r: .6 + Math.random() * 1.5
+    };
+  }
+
+  /* ---------- sound (synthesized, no files) ---------- */
+  let AC = null, master = null;
+  function audio(){
+    if (!AC) {
+      try {
+        AC = new (window.AudioContext || window.webkitAudioContext)();
+        master = AC.createGain(); master.gain.value = .5; master.connect(AC.destination);
+      } catch (e) { AC = null; }
+    }
+    if (AC && AC.state === 'suspended') AC.resume();
+  }
+  function tone(f0, f1, dur, type = 'square', vol = .15, delay = 0){
+    if (!AC || muted) return;
+    const t = AC.currentTime + delay;
+    const o = AC.createOscillator(), g = AC.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(f0, t);
+    o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur);
+    g.gain.setValueAtTime(vol, t);
+    g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t + dur + .05);
+  }
+  function noise(dur, vol = .3, freq = 800, delay = 0){
+    if (!AC || muted) return;
+    const t = AC.currentTime + delay;
+    const len = Math.floor(AC.sampleRate * dur);
+    const buf = AC.createBuffer(1, len, AC.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+    const src = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
+    src.buffer = buf;
+    f.type = 'lowpass';
+    f.frequency.setValueAtTime(freq, t);
+    f.frequency.exponentialRampToValueAtTime(Math.max(60, freq * .3), t + dur);
+    g.gain.setValueAtTime(vol, t);
+    src.connect(f); f.connect(g); g.connect(master);
+    src.start(t);
+  }
+  const sfx = {
+    jump(){ tone(260, 760, .18, 'square', .08); },
+    land(){ noise(.06, .08, 500); },
+    gem(){ tone(880, 1320, .12, 'triangle', .18); tone(1320, 1760, .14, 'triangle', .15, .08); },
+    hit(){ noise(.4, .45, 900); tone(220, 50, .35, 'sawtooth', .2); },
+    roar(){ noise(.9, .35, 420); noise(.9, .22, 1600); tone(120, 55, .9, 'sawtooth', .1); },
+    level(){ tone(330, 660, .25, 'triangle', .18); tone(495, 990, .3, 'triangle', .15, .12); },
+    over(){ tone(440, 90, 1, 'triangle', .25); noise(.8, .25, 300, .1); },
+    point(){ tone(1040, 1040, .05, 'sine', .04); }
+  };
+  function toggleMute(){
+    muted = !muted;
+    $('soundBtn').textContent = muted ? 'Sound off' : 'Sound on';
+  }
+
+  /* ---------- effects ---------- */
+  function puff(x, y, n, col = '#c9a58a'){
+    for (let i = 0; i < n; i++) particles.push({
+      x: x + (Math.random() - .5) * 10, y, vx: (Math.random() - .5) * 1.6 - .4,
+      vy: -Math.random() * 1.2, life: 24, max: 24, col, r: 1.5 + Math.random() * 2
+    });
+  }
+  function sparks(x, y, n){
+    for (let i = 0; i < n; i++) particles.push({
+      x, y, vx: (Math.random() - .5) * 6, vy: (Math.random() - .5) * 6 - 2,
+      life: 30, max: 30, col: Math.random() < .5 ? '#ffb36b' : '#ff6a3d', r: 1.5 + Math.random() * 2
+    });
+  }
+
+  /* ---------- HUD ---------- */
+  const HUD = { score: $('score'), best: $('best'), level: $('level'), lives: $('lives') };
+  const shown = {};
+  function setHud(k, v){
+    if (shown[k] !== v) { shown[k] = v; HUD[k].textContent = v; }
+  }
+  function syncHud(){
+    setHud('score', S.score);
+    setHud('best', high);
+    setHud('level', S.level);
+    setHud('lives', '♥'.repeat(Math.max(0, S.lives)) + '♡'.repeat(Math.max(0, 3 - S.lives)));
+  }
+
+  /* ---------- overlay & banner ---------- */
+  const ov = $('overlay');
+  function showOverlay(title, html, btn){
+    $('ovTitle').innerHTML = title;
+    $('ovText').innerHTML = html;
+    $('ovBtn').textContent = btn;
+    ov.classList.remove('hidden');
+  }
+  function hideOverlay(){ ov.classList.add('hidden'); }
+  let bannerTimer = 0;
+  function banner(title, sub){
+    $('bnTitle').textContent = title;
+    $('bnSub').textContent = sub;
+    $('banner').classList.add('show');
+    clearTimeout(bannerTimer);
+    bannerTimer = setTimeout(() => $('banner').classList.remove('show'), 1800);
+  }
+
+  /* ---------- game flow ---------- */
+  function reset(){
+    S.dist = 0; S.score = 0; S.bonus = 0; S.lives = 3; S.level = 1;
+    S.speed = 6; S.invul = 0; S.shake = 0; S.spawnIn = 260;
+    S.startBest = high; S.lastScore = 0;
+    dragon.bottom = GROUND; dragon.vy = 0; dragon.onGround = true; dragon.ducking = false;
+    obstacles = []; gems = []; particles = [];
+    syncHud();
+  }
+  function start(){
+    audio();
+    if (S.state === 'running') return;
+    if (S.state === 'over' && performance.now() - S.overAt < 700) return;
+    reset();
+    S.state = 'running';
+    hideOverlay();
+    sfx.roar();
+  }
+  function jump(){
+    audio();
+    if (S.state === 'ready' || S.state === 'over') { start(); return; }
+    if (S.state !== 'running') return;
+    if (dragon.onGround && !dragon.ducking) {
+      dragon.vy = -15.2; dragon.onGround = false;
+      sfx.jump(); puff(dragon.x, GROUND, 5);
+    }
+  }
+  function togglePause(){
+    if (S.state === 'running') {
+      S.state = 'paused'; duckHeld = false;
+      showOverlay('Paused', 'Press <b>P</b> or tap to keep flying.', 'Resume');
+    } else if (S.state === 'paused') {
+      S.state = 'running'; hideOverlay();
+    }
+  }
+  function onPrimary(){
+    if (S.state === 'paused') togglePause(); else start();
+  }
+  function hurt(){
+    S.lives--; S.invul = 1400; S.shake = 16;
+    sfx.hit(); sparks(dragon.x + 20, dragon.bottom - 30, 14);
+    if (S.lives <= 0) gameOver();
+    syncHud();
+  }
+  function gameOver(){
+    S.state = 'over'; S.overAt = performance.now();
+    sfx.over();
+    const isBest = S.score > S.startBest && S.score === high;
+    showOverlay(
+      'Scorched <em>.</em>',
+      `Score <b>${S.score}</b> · Best <b>${high}</b>` + (isBest ? '<br><span class="new">New best</span>' : ''),
+      'Run again'
+    );
+  }
+
+  /* ---------- spawning ---------- */
+  const DEF = {
+    stone:   { w: 26, h: 34 },
+    crystal: { w: 40, h: 56 },
+    spire:   { w: 22, h: 84 },
+    bat:     { w: 44, h: 22, air: true }
+  };
+  function addObs(type, x){
+    const d = DEF[type];
+    obstacles.push({
+      type, x, w: d.w, h: d.h,
+      y: d.air ? GROUND - 62 : GROUND - d.h,
+      flap: Math.random() * 10
+    });
+  }
+  function spawn(){
+    const L = S.level;
+    const pool = ['stone', 'crystal'];
+    if (L >= 2) pool.push('bat', 'bat');
+    if (L >= 3) pool.push('spire', 'spire');
+    const first = pool[(Math.random() * pool.length) | 0];
+    const x = GW + 30;
+    addObs(first, x);
+    if (first !== 'bat' && L >= 4 && Math.random() < .35) {
+      const g2 = L >= 3 ? ['stone', 'crystal', 'spire'] : ['stone', 'crystal'];
+      addObs(g2[(Math.random() * g2.length) | 0], x + 200 + Math.random() * 60);
+    }
+    if (Math.random() < .4) {
+      for (let i = 0; i < 3; i++) gems.push({ x: x + 70 + i * 28, y: GROUND - 96, got: false });
+    }
+    const minT = Math.max(.55, .95 - (L - 1) * .05);
+    const maxT = Math.max(.9, 1.5 - (L - 1) * .06);
+    S.spawnIn = S.speed * 60 * (minT + Math.random() * (maxT - minT));
+  }
+
+  /* ---------- update ---------- */
+  function hit(a, b){
+    return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+  }
+  function ambient(s){
+    for (const e of embers) {
+      e.y -= e.v * s;
+      e.x += Math.sin(S.t * .02 + e.p) * .3 * s;
+      if (e.y < -10) Object.assign(e, newEmber(false));
+    }
+    for (const p of particles) {
+      p.x += p.vx * s; p.y += p.vy * s; p.vy += .04 * s; p.life -= s;
+    }
+    particles = particles.filter(p => p.life > 0);
+  }
+  function step(s, dt){
+    S.invul = Math.max(0, S.invul - dt);
+    S.shake *= Math.pow(.85, s);
+
+    const target = Math.min(13.5, 6 + (S.level - 1) * .55);
+    S.speed += (target - S.speed) * Math.min(1, .02 * s);
+    S.dist += S.speed * s;
+
+    // dragon physics
+    dragon.ducking = duckHeld && dragon.onGround;
+    if (!dragon.onGround && duckHeld) dragon.vy += 1.2 * s;
+    const wasAir = !dragon.onGround;
+    dragon.vy += .85 * s;
+    dragon.bottom += dragon.vy * s;
+    if (dragon.bottom >= GROUND) {
+      dragon.bottom = GROUND; dragon.vy = 0;
+      if (wasAir) { sfx.land(); puff(dragon.x, GROUND, 8); }
+      dragon.onGround = true;
+    } else {
+      dragon.onGround = false;
+    }
+    if (dragon.onGround && Math.random() < .12 * s) puff(dragon.x - 22, GROUND, 1, '#a7836f');
+
+    // world
+    S.spawnIn -= S.speed * s;
+    if (S.spawnIn <= 0) spawn();
+    for (const o of obstacles) o.x -= S.speed * s;
+    for (const g of gems) g.x -= S.speed * s;
+    obstacles = obstacles.filter(o => o.x + o.w > -40);
+    gems = gems.filter(g => g.x > -30 && !g.got);
+
+    // collisions
+    const hb = dragon.ducking
+      ? { x: dragon.x - 6, y: dragon.bottom - 22, w: 68, h: 22 }
+      : { x: dragon.x - 6, y: dragon.bottom - 46, w: 58, h: 46 };
+
+    if (S.invul <= 0) {
+      for (const o of obstacles) {
+        if (hit(hb, { x: o.x + 3, y: o.y + 3, w: o.w - 6, h: o.h - 6 })) { hurt(); break; }
+      }
+    }
+    for (const g of gems) {
+      if (!g.got && g.x > hb.x - 8 && g.x < hb.x + hb.w + 8 && g.y > hb.y - 10 && g.y < hb.y + hb.h + 10) {
+        g.got = true; S.bonus += 30; sfx.gem(); sparks(g.x, g.y, 8);
+      }
+    }
+    if (S.state !== 'running') return;
+
+    // score, level, best
+    S.score = Math.floor(S.dist / 10) + S.bonus;
+    if (Math.floor(S.score / 100) > Math.floor(S.lastScore / 100)) sfx.point();
+    S.lastScore = S.score;
+
+    const nl = 1 + Math.floor(S.score / 350);
+    if (nl > S.level) {
+      S.level = nl; sfx.level();
+      banner('Level ' + nl, LVL_MSG[Math.min(nl, LVL_MSG.length - 1)]);
+    }
+    if (S.score > high) {
+      high = S.score;
+      try { localStorage.setItem(KEY, high); } catch (e) {}
+    }
+    syncHud();
+  }
+
+  /* ---------- drawing ---------- */
+  function makeRidgeDraw(pts, off, base, color, period){
+    const n = pts.length - 1, step = period / n;
+    const o = ((off % period) + period) % period;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(-1200, GH);
+    for (let i = -n - 1; i <= 2 * n + 1; i++) {
+      const idx = ((i % n) + n) % n;
+      ctx.lineTo(i * step - o, base - pts[idx]);
+    }
+    ctx.lineTo(2400, GH);
+    ctx.closePath();
+    ctx.fill();
+  }
+  function spike(bx, by, hgt, wd, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(bx, by); ctx.lineTo(bx + wd * .5, by - hgt); ctx.lineTo(bx + wd, by);
+    ctx.closePath(); ctx.fill();
+  }
+  function drawObstacle(o){
+    const x = o.x, w = o.w, h = o.h, y = o.y;
+    ctx.save();
+    if (o.type === 'stone') {
+      ctx.fillStyle = '#6d4a3e';
+      ctx.beginPath();
+      ctx.moveTo(x, GROUND);
+      ctx.quadraticCurveTo(x - 2, y + h * .4, x + w * .35, y + 2);
+      ctx.quadraticCurveTo(x + w * .7, y - 4, x + w, y + h * .35);
+      ctx.lineTo(x + w, GROUND); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = 'rgba(255,210,160,.18)';
+      ctx.fillRect(x + w * .3, y + 5, w * .25, 2);
+    } else if (o.type === 'crystal') {
+      ctx.shadowColor = '#ff7a3d'; ctx.shadowBlur = 12;
+      spike(x, GROUND, h, w * .5, '#ff9a5a');
+      spike(x + w * .3, GROUND, h * .72, w * .42, '#ff7a3d');
+      spike(x + w * .6, GROUND, h * .9, w * .4, '#ffb36b');
+      ctx.shadowBlur = 0;
+    } else if (o.type === 'spire') {
+      ctx.fillStyle = '#3d2730';
+      ctx.beginPath();
+      ctx.moveTo(x, GROUND); ctx.lineTo(x + w * .4, y + h * .25);
+      ctx.lineTo(x + w * .5, y); ctx.lineTo(x + w * .62, y + h * .2);
+      ctx.lineTo(x + w, GROUND); ctx.closePath(); ctx.fill();
+      ctx.shadowColor = '#ff7a3d'; ctx.shadowBlur = 14;
+      ctx.fillStyle = '#ffb36b';
+      ctx.beginPath(); ctx.arc(x + w * .5, y + 3, 3, 0, 6.283); ctx.fill();
+      ctx.shadowBlur = 0;
+    } else if (o.type === 'bat') {
+      const cx = x + w / 2, cy = y + h / 2, f = Math.sin(S.t * .35 + o.flap);
+      ctx.fillStyle = '#4a1f2c';
+      ctx.beginPath();
+      ctx.moveTo(cx - 4, cy); ctx.quadraticCurveTo(cx - 16, cy - 12 - f * 8, x, cy - 4 + f * 4);
+      ctx.quadraticCurveTo(cx - 10, cy + 2, cx - 4, cy + 3); ctx.closePath(); ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx + 4, cy); ctx.quadraticCurveTo(cx + 16, cy - 12 - f * 8, x + w, cy - 4 + f * 4);
+      ctx.quadraticCurveTo(cx + 10, cy + 2, cx + 4, cy + 3); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(cx, cy + 1, 6, 4.5, 0, 0, 6.283); ctx.fill();
+      ctx.fillStyle = '#ffc86b';
+      ctx.beginPath(); ctx.arc(cx - 2.5, cy, 1.2, 0, 6.283); ctx.arc(cx + 2.5, cy, 1.2, 0, 6.283); ctx.fill();
+    }
+    ctx.restore();
+  }
+  function drawGem(g){
+    const y = g.y + Math.sin(S.t * .1 + g.x * .05) * 3;
+    ctx.save();
+    ctx.shadowColor = '#ffc86b'; ctx.shadowBlur = 14;
+    ctx.fillStyle = '#ffc86b';
+    ctx.beginPath();
+    ctx.moveTo(g.x, y - 8); ctx.lineTo(g.x + 6, y); ctx.lineTo(g.x, y + 8); ctx.lineTo(g.x - 6, y);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  function wing(color, f, alpha){
+    ctx.save();
+    ctx.globalAlpha *= alpha;
+    ctx.fillStyle = color;
+    ctx.strokeStyle = 'rgba(255,170,110,.55)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(6, -40);
+    ctx.quadraticCurveTo(-8, -60 - f * 6, -30 + f * 6, -74 - f * 22);
+    ctx.quadraticCurveTo(-14, -52, 4, -30);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  function drawDragon(){
+    const d = dragon, t = S.t;
+    const run = d.onGround && S.state === 'running';
+    const legs = run ? Math.sin(t * .42) * 5 : 0;
+    const footY = d.onGround ? 0 : -8;
+    const flap = Math.sin(t * (d.onGround ? .12 : .26));
+    const blink = S.invul > 0 && Math.floor(t / 4) % 2 === 0;
+
+    ctx.save();
+    ctx.globalAlpha = blink ? .3 : 1;
+    ctx.translate(d.x, d.bottom);
+    if (d.ducking) ctx.scale(1.14, .56);
+    else if (!d.onGround) ctx.rotate(Math.max(-.22, Math.min(.18, d.vy * .012)));
+
+    // tail
+    ctx.fillStyle = '#8f2519';
+    ctx.beginPath();
+    ctx.moveTo(-14, -28);
+    ctx.quadraticCurveTo(-40, -30, -54, -20 + Math.sin(t * .18) * 3);
+    ctx.quadraticCurveTo(-40, -18, -18, -18);
+    ctx.closePath(); ctx.fill();
+
+    wing('#5a1a2c', flap, .6);
+
+    // legs
+    ctx.strokeStyle = '#7a2118'; ctx.lineCap = 'round'; ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(-8, -18); ctx.lineTo(-12 + legs, footY);
+    ctx.moveTo(18, -18); ctx.lineTo(20 - legs, footY);
+    ctx.stroke();
+
+    // body
+    const bg = ctx.createLinearGradient(-20, -46, 24, -10);
+    bg.addColorStop(0, '#f06a44'); bg.addColorStop(1, '#9c2a1c');
+    ctx.fillStyle = bg;
+    ctx.beginPath(); ctx.ellipse(6, -28, 30, 17, -.05, 0, 6.283); ctx.fill();
+    ctx.fillStyle = 'rgba(255,196,120,.7)';
+    ctx.beginPath(); ctx.ellipse(10, -20, 18, 6.5, -.05, 0, 6.283); ctx.fill();
+    ctx.fillStyle = 'rgba(255,190,110,.45)';
+    for (let i = 0; i < 4; i++) {
+      ctx.beginPath(); ctx.arc(-8 + i * 9, -40 + (i % 2) * 2, 2.2, 0, 6.283); ctx.fill();
+    }
+
+    // neck and head
+    ctx.strokeStyle = '#e0563a'; ctx.lineWidth = 15;
+    ctx.beginPath(); ctx.moveTo(22, -32); ctx.lineTo(38, -52); ctx.stroke();
+    ctx.fillStyle = '#e8603f';
+    ctx.beginPath(); ctx.ellipse(44, -56, 14, 10, -.1, 0, 6.283); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(56, -54, 9, 6, 0, 0, 6.283); ctx.fill();
+
+    // horns
+    ctx.fillStyle = '#e8a84a';
+    ctx.beginPath(); ctx.moveTo(46, -64); ctx.lineTo(44, -82); ctx.lineTo(54, -66); ctx.fill();
+    ctx.fillStyle = '#ffd27a';
+    ctx.beginPath(); ctx.moveTo(36, -62); ctx.lineTo(30, -80); ctx.lineTo(42, -64); ctx.fill();
+
+    // eye, mouth, ember glow
+    ctx.fillStyle = '#fff3d6';
+    ctx.beginPath(); ctx.arc(48, -59, 3.4, 0, 6.283); ctx.fill();
+    ctx.fillStyle = '#120a08';
+    ctx.beginPath(); ctx.arc(49, -59, 1.7, 0, 6.283); ctx.fill();
+    ctx.strokeStyle = '#5c160f'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(50, -51); ctx.quadraticCurveTo(55, -48, 61, -51); ctx.stroke();
+    const gl = 2.5 + Math.sin(t * .3) * 1.2;
+    ctx.shadowColor = '#ffb347'; ctx.shadowBlur = 10;
+    ctx.fillStyle = '#ffd27a';
+    ctx.beginPath(); ctx.arc(62, -53, gl, 0, 6.283); ctx.fill();
+    ctx.shadowBlur = 0;
+
+    wing('#7f2a40', flap, 1);
+    ctx.restore();
+  }
+  function drawObstaclesAndGems(){
+    for (const o of obstacles) drawObstacle(o);
+    for (const g of gems) drawGem(g);
+  }
+
+  function draw(){
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // screen-space sky
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#16101a');
+    sky.addColorStop(.6, '#33202a');
+    sky.addColorStop(1, '#6a2f22');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.save();
+    ctx.translate(offX, offY);
+    ctx.scale(scale, scale);
+    if (S.shake > .5) ctx.translate((Math.random() - .5) * S.shake, (Math.random() - .5) * S.shake);
+
+    // sun
+    const sunX = 600, sunY = 90 + Math.sin(S.t * .005) * 4;
+    const rg = ctx.createRadialGradient(sunX, sunY, 10, sunX, sunY, 170);
+    rg.addColorStop(0, 'rgba(255,170,90,.5)');
+    rg.addColorStop(1, 'rgba(255,120,60,0)');
+    ctx.fillStyle = rg;
+    ctx.fillRect(-400, -200, 1600, 600);
+    ctx.fillStyle = '#ffc98a';
+    ctx.globalAlpha = .85;
+    ctx.beginPath(); ctx.arc(sunX, sunY, 34, 0, 6.283); ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // ridges (parallax)
+    makeRidgeDraw(ridgeFar, S.dist * .06, GROUND - 4, '#3a2530', 800);
+    makeRidgeDraw(ridgeMid, S.dist * .18, GROUND + 2, '#2a1a20', 800);
+
+    // ground
+    ctx.fillStyle = '#2a1d1a';
+    ctx.fillRect(-1200, GROUND, 3600, 400);
+    ctx.shadowColor = '#ff7a3d'; ctx.shadowBlur = 10;
+    ctx.fillStyle = '#ff8a4c';
+    ctx.fillRect(-1200, GROUND, 3600, 2);
+    ctx.shadowBlur = 0;
+
+    // lava cracks scrolling with distance
+    ctx.strokeStyle = 'rgba(255,130,70,.55)';
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    for (const c of cracks) {
+      const xw = (((c.x - S.dist) % 600) + 600) % 600;
+      for (let k = -1; k <= 1; k++) {
+        const x = xw + k * 600;
+        if (x < -60 || x > GW + 60) continue;
+        ctx.moveTo(x, GROUND + c.y);
+        ctx.lineTo(x + c.len, GROUND + c.y + c.j);
+      }
+    }
+    ctx.stroke();
+
+    // ambient embers
+    for (const e of embers) {
+      ctx.globalAlpha = .4 + .4 * Math.sin(S.t * .1 + e.p);
+      ctx.fillStyle = '#ffb36b';
+      ctx.beginPath(); ctx.arc(e.x, e.y, e.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    drawObstaclesAndGems();
+
+    for (const p of particles) {
+      ctx.globalAlpha = Math.max(0, p.life / p.max);
+      ctx.fillStyle = p.col;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    drawDragon();
+    ctx.restore();
+  }
+
+  /* ---------- loop ---------- */
+  let last = performance.now();
+  function loop(now){
+    const dt = Math.min(50, now - last);
+    last = now;
+    const s = dt / 16.667;
+    S.t += s;
+    ambient(s);
+    if (S.state === 'running') step(s, dt);
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  /* ---------- input ---------- */
+  addEventListener('keydown', e => {
+    if (['Space', 'ArrowUp', 'ArrowDown'].includes(e.code)) e.preventDefault();
+    if (e.code === 'Space' || e.code === 'ArrowUp') { if (!e.repeat) jump(); }
+    else if (e.code === 'ArrowDown') duckHeld = true;
+    else if (e.code === 'KeyP' || e.code === 'Escape') togglePause();
+    else if (e.code === 'KeyM') toggleMute();
+    else if (e.code === 'Enter' && S.state !== 'running') start();
+  });
+  addEventListener('keyup', e => { if (e.code === 'ArrowDown') duckHeld = false; });
+
+  stage.addEventListener('pointerdown', e => {
+    if (e.target === $('ovBtn')) return;
+    if (S.state === 'running') jump();
+    else if (S.state === 'paused') togglePause();
+    else start();
+  });
+  $('ovBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    $('ovBtn').blur();
+    onPrimary();
+  });
+
+  const duckBtn = $('duckBtn'), jumpBtn = $('jumpBtn');
+  duckBtn.addEventListener('pointerdown', e => { e.preventDefault(); audio(); duckHeld = true; });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev =>
+    duckBtn.addEventListener(ev, () => { duckHeld = false; })
+  );
+  jumpBtn.addEventListener('pointerdown', e => { e.preventDefault(); jump(); });
+
+  $('soundBtn').addEventListener('click', toggleMute);
+  $('pauseBtn').addEventListener('click', togglePause);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && S.state === 'running') togglePause();
+  });
+
+  /* ---------- boot ---------- */
+  resize();
+  syncHud();
+  showOverlay(
+    'Ember <em>Run</em>',
+    "Dragons don't run from the rocks. They fly over them.<br>" +
+    "<b>Space / ↑</b> jump &nbsp;·&nbsp; <b>↓</b> duck &nbsp;·&nbsp; collect the gems<br>" +
+    "On a phone: tap to jump, hold Duck.",
+    'Start'
+  );
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

@@ -1,233 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101010">
-
-  <title>You're Offline | Adhrit</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: #101010;
-      color: #ededed;
-      font-family: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    }
-
-    .offline-page {
-      width: 100%;
-      max-width: 460px;
-    }
-
-    .brand {
-      margin-bottom: 65px;
-      color: #ededed;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-    }
-
-    .brand span {
-      color: #777;
-      font-weight: 400;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 11px;
-      margin-bottom: 27px;
-      border: 1px solid #303030;
-      border-radius: 5px;
-      color: #a3a3a3;
-      font-size: 12px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #d97757;
-    }
-
-    h1 {
-      margin-bottom: 15px;
-      font-size: clamp(32px, 7vw, 43px);
-      line-height: 1.15;
-      letter-spacing: -1.8px;
-      font-weight: 650;
-    }
-
-    .description {
-      color: #929292;
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 400px;
-    }
-
-    .divider {
-      height: 1px;
-      margin: 32px 0 23px;
-      background: #292929;
-    }
-
-    .help-text {
-      color: #777;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    button {
-      padding: 12px 19px;
-      border: 1px solid #e5e5e5;
-      border-radius: 5px;
-      background: #e5e5e5;
-      color: #111;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    button:hover {
-      background: #fff;
-      border-color: #fff;
-    }
-
-    button:disabled {
-      cursor: wait;
-      opacity: 0.65;
-    }
-
-    .footer {
-      margin-top: 75px;
-      color: #555;
-      font-size: 12px;
-    }
-
-    @media (max-width: 480px) {
-      .brand {
-        margin-bottom: 55px;
-      }
-
-      .footer {
-        margin-top: 60px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline · Ember</title>
+<style>
+  :root{
+    --bg-top:#1f1816; --bg-bottom:#120e0d;
+    --ink:#f3e7d6; --muted:#9f8c7f; --line:rgba(243,185,100,.22);
+    --ember:#ea7a42; --gold:#f3b964;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;
+    color:var(--ink);overflow:hidden;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:
+      radial-gradient(90% 60% at 50% 115%, rgba(234,122,66,.16), transparent 70%),
+      linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  #embers{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+  main{position:relative;text-align:center;max-width:560px;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .status{
+    display:inline-flex;align-items:center;gap:10px;padding:7px 14px;margin-bottom:28px;
+    border:1px solid var(--line);border-radius:999px;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);animation:pulse 2.2s ease-out infinite}
+  h1{
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400;
+    font-size:clamp(64px,17vw,148px);line-height:.92;letter-spacing:-.025em;
+  }
+  h1 em{font-style:italic;color:var(--ember)}
+  .sub{margin:22px auto 34px;font-size:clamp(14px,3.8vw,16px);line-height:1.65;color:var(--muted)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .btn{
+    font:inherit;font-size:13px;letter-spacing:.02em;padding:10px 18px;border-radius:999px;
+    border:1px solid var(--line);background:transparent;color:var(--ink);
+    text-decoration:none;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;
+  }
+  .btn:hover{transform:translateY(-1px);border-color:var(--gold)}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn.primary{background:var(--ember);border-color:var(--ember);color:#1a100c;font-weight:600}
+  .btn.primary:hover{background:#f08a55;border-color:#f08a55}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(234,122,66,.55)}
+    70%{box-shadow:0 0 0 10px rgba(234,122,66,0)}
+    100%{box-shadow:0 0 0 0 rgba(234,122,66,0)}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
-
 <body>
-  <main class="offline-page">
+<canvas id="embers" aria-hidden="true"></canvas>
 
-    <div class="brand">
-      Adhrit <span>/ Portfolio</span>
-    </div>
+<main>
+  <div class="status"><span class="dot" id="dot"></span><span id="status">No connection</span></div>
+  <h1>You are <em>offline</em></h1>
+  <p class="sub">Connect to the net and this page will pick back up on its own.</p>
+  <div class="actions">
+    <button class="btn primary" id="retry" type="button">Try again</button>
+    <a class="btn" href="dragon_game.html">Play dragon run</a>
+  </div>
+</main>
 
-    <div class="status" id="status">
-      <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">No internet connection</span>
-    </div>
+<script>
+  const dot = document.getElementById('dot');
+  const statusEl = document.getElementById('status');
 
-    <h1>You're offline.</h1>
+  function paint(){
+    const on = navigator.onLine;
+    statusEl.textContent = on ? 'Back online' : 'No connection';
+    dot.style.background = on ? '#f3b964' : '#ea7a42';
+  }
+  addEventListener('online', () => { paint(); setTimeout(() => location.reload(), 900); });
+  addEventListener('offline', paint);
+  document.getElementById('retry').addEventListener('click', () => location.reload());
+  paint();
 
-    <p class="description">
-      It looks like your device isn't connected to the internet.
-      An active internet connection is required to access this
-      portfolio. Please check your network and try again.
-    </p>
+  // floating embers
+  const cv = document.getElementById('embers');
+  const g = cv.getContext('2d');
+  let w = 0, h = 0, pts = [];
 
-    <div class="divider"></div>
-
-    <p class="help-text">
-      Check your Wi-Fi or mobile data connection. Once you're
-      back online, you can return to the portfolio.
-    </p>
-
-    <div class="actions">
-      <button id="retryButton" onclick="retryConnection()">
-        Try again
-      </button>
-    </div>
-
-    <div class="footer">
-      &copy; <span id="year"></span> Adhrit
-    </div>
-
-  </main>
-
-  <script>
-    const retryButton = document.getElementById("retryButton");
-    const statusText = document.getElementById("statusText");
-    const statusDot = document.getElementById("statusDot");
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    function updateConnectionStatus() {
-      if (navigator.onLine) {
-        statusText.textContent = "Connection restored";
-        statusDot.style.background = "#65b98a";
-      } else {
-        statusText.textContent = "No internet connection";
-        statusDot.style.background = "#d97757";
-      }
+  function newEmber(init){
+    return {
+      x: Math.random() * w,
+      y: init ? Math.random() * h : h + 10,
+      r: .5 + Math.random() * 1.6,
+      v: .25 + Math.random() * .6,
+      p: Math.random() * 6.28
+    };
+  }
+  function size(){
+    const d = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight;
+    cv.width = w * d; cv.height = h * d;
+    g.setTransform(d, 0, 0, d, 0, 0);
+  }
+  function seed(){
+    const n = Math.min(70, Math.round(w * h / 18000));
+    pts = Array.from({ length: n }, () => newEmber(true));
+  }
+  function tick(t){
+    g.clearRect(0, 0, w, h);
+    for (const p of pts){
+      p.y -= p.v;
+      p.x += Math.sin(t / 900 + p.p) * .25;
+      if (p.y < -8) Object.assign(p, newEmber(false));
+      g.globalAlpha = .25 + .35 * Math.abs(Math.sin(t / 700 + p.p));
+      g.fillStyle = p.r > 1.4 ? '#f3b964' : '#ea7a42';
+      g.beginPath();
+      g.arc(p.x, p.y, p.r, 0, 6.283);
+      g.fill();
     }
-
-    async function retryConnection() {
-      retryButton.disabled = true;
-      retryButton.textContent = "Checking...";
-
-      updateConnectionStatus();
-
-      if (navigator.onLine) {
-        window.location.reload();
-        return;
-      }
-
-      setTimeout(() => {
-        retryButton.disabled = false;
-        retryButton.textContent = "Try again";
-        updateConnectionStatus();
-      }, 1000);
-    }
-
-    window.addEventListener("online", () => {
-      updateConnectionStatus();
-      window.location.reload();
-    });
-
-    window.addEventListener("offline", updateConnectionStatus);
-
-    updateConnectionStatus();
-  </script>
+    g.globalAlpha = 1;
+    requestAnimationFrame(tick);
+  }
+  addEventListener('resize', () => { size(); seed(); });
+  size(); seed();
+  requestAnimationFrame(tick);
+</script>
 </body>
 </html>
-
